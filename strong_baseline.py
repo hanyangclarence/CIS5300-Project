@@ -25,6 +25,7 @@ import sentencepiece
 from transformers import get_linear_schedule_with_warmup, AdamW
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+from rouge import Rouge
 
 
 import xml.etree.ElementTree as ET
@@ -47,7 +48,7 @@ train_data = []
 for file in train_list:
     tree = ET.parse("data/top1000_complete/" + file + "/Documents_xml/" + file + ".xml")
     root = tree.getroot()
-    xmlstr = ET.tostring(root, encoding='utf8', method='xml')
+    xmlstr = " ".join([elem.text for elem in root.findall('.//S') if elem.text is not None])
 
     summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'r')
     summary_str = summary.read()
@@ -61,7 +62,7 @@ test_data = []
 for file in test_list:
     tree = ET.parse("data/top1000_complete/" + file + "/Documents_xml/" + file + ".xml")
     root = tree.getroot()
-    xmlstr = ET.tostring(root, encoding='utf8', method='xml')
+    xmlstr = " ".join([elem.text for elem in root.findall('.//S') if elem.text is not None])
 
     summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'r')
     summary_str = summary.read()
@@ -223,12 +224,14 @@ class SummaryModel(pl.LightningModule):
         return {'optimizer': optimizer, 'lr_scheduler': scheduler}
 
 
+
+
 if __name__ == '__main__':
     MODEL = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
     TOKENIZER = T5Tokenizer.from_pretrained("t5-base")
     BATCH_SIZE = 1
-    TEXT_LEN = 128
-    SUM_LEN = 64
+    TEXT_LEN = 64
+    SUM_LEN = 32
     EPOCHS = 1
     DEVICE = "cuda:0"
 
@@ -271,3 +274,18 @@ if __name__ == '__main__':
 
         return " ".join([TOKENIZER.decode(token_ids, skip_special_tokens=True)
                         for token_ids in summarized_ids])
+
+
+
+
+    ## Evaluation of the model
+
+    hypothesis = []
+    reference = []
+    for lines in test_df:
+        hypothesis.append(summarize(lines[1]))
+        reference.append(lines[0])
+
+    rouge = Rouge()
+    scores = rouge.get_scores(hypothesis, reference, avg=True)
+    print(scores)
