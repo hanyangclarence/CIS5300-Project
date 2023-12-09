@@ -7,11 +7,11 @@ from torch.utils.data import Dataset, DataLoader, RandomSampler
 import lightning as pl
 import nltk
 from nltk.corpus import stopwords
-nltk.download('stopwords')
+#nltk.download('stopwords')
 
 from nltk.stem import WordNetLemmatizer
-nltk.download("wordnet")
-nltk.download('omw-1.4')
+#nltk.download("wordnet")
+#nltk.download('omw-1.4')
 import os
 import string
 import torch.nn as nn
@@ -196,6 +196,10 @@ class SummaryModel(pl.LightningModule):
         attention_mask = batch["attention_mask"]
         labels = batch["summary_ids"]
         decoder_attention_mask = batch["summary_mask"]
+        input_ids.to(device)
+        attention_mask.to(device)
+        labels.to(device)
+        decoder_attention_mask.to(device)
 
         loss, output = self(input_ids, attention_mask, labels, decoder_attention_mask)
         return loss
@@ -205,6 +209,10 @@ class SummaryModel(pl.LightningModule):
         attention_mask = batch["attention_mask"]
         labels = batch["summary_ids"]
         decoder_attention_mask = batch["summary_mask"]
+        input_ids.to(device)
+        attention_mask.to(device)
+        labels.to(device)
+        decoder_attention_mask.to(device)
 
         loss, output = self(input_ids, attention_mask, labels, decoder_attention_mask)
         return loss
@@ -212,6 +220,9 @@ class SummaryModel(pl.LightningModule):
     def test_step(self, batch, batch_idx):
         input_ids = batch["input_ids"]
         attention_mask = batch["attention_mask"]
+        input_ids.to(device)
+        attention_mask.to(device)
+
         loss, output = self(input_ids=input_ids,
                             attention_mask=attention_mask)
         return loss
@@ -227,7 +238,10 @@ class SummaryModel(pl.LightningModule):
 
 
 if __name__ == '__main__':
+    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+
     MODEL = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
+    MODEL.to(device=device)
     TOKENIZER = T5Tokenizer.from_pretrained("t5-base")
     BATCH_SIZE = 1
     TEXT_LEN = 64
@@ -245,6 +259,7 @@ if __name__ == '__main__':
     next(iter(summary_module.train_dataloader().dataset))
 
     model = SummaryModel()
+    model.to(device=device)
 
     trainer = pl.Trainer(
         max_epochs=EPOCHS
@@ -259,6 +274,9 @@ if __name__ == '__main__':
         trainer.checkpoint_callback.best_model_path
     )
     summary_model.freeze()
+
+
+    summary_model.to(device=device)
 
     def summarize(text):
         inputs = TOKENIZER(text,
@@ -279,13 +297,13 @@ if __name__ == '__main__':
 
 
     ## Evaluation of the model
-
-    hypothesis = []
-    reference = []
-    for lines in test_df:
-        hypothesis.append(summarize(lines[1]))
-        reference.append(lines[0])
-
     rouge = Rouge()
-    scores = rouge.get_scores(hypothesis, reference, avg=True)
-    print(scores)
+    score = []
+    for lines in test_df:
+        hypothesis = summarize(lines[1])
+        reference = lines[0]
+        score.append(rouge.get_scores(hypothesis, reference, avg=True)[0]['rouge-l']['f'])
+
+
+
+    print("The average Rouge-L score is", sum(score) / len(score))
