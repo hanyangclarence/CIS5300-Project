@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Hyperparameters
     MODEL = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
     TOKENIZER = T5Tokenizer.from_pretrained("t5-base")
-    BATCH_SIZE = 10
+    BATCH_SIZE = 5
     TEXT_LEN = 1024
     SUM_LEN = 512
     EPOCHS = 10
