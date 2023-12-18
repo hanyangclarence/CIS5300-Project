@@ -4,6 +4,7 @@ import pandas as pd
 from transformers import T5Tokenizer
 import xml.etree.ElementTree as ET
 import pytorch_lightning as pl
+from lightning.pytorch.callbacks import ModelCheckpoint
 
 from model.model import SummaryModel
 from model.dataset import SummaryDataModule
@@ -101,13 +102,19 @@ if __name__ == "__main__":
     # setup model
     summary_model = SummaryModel(model_name=model_name, total_step=EPOCHS * len(df))
 
+    # setup checkpoint saver
+    checkpoint_callback = ModelCheckpoint(monitor='val_loss', save_top_k=1)
+
     # setup trainer
     trainer = pl.Trainer(
         max_epochs=EPOCHS,
         accelerator="gpu",
+        callbacks=[checkpoint_callback]
     )
 
     trainer.fit(summary_model, summary_module)
+
+    print(f'Train done, best model saved in {checkpoint_callback.best_model_path}')
 
 
 
