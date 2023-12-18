@@ -1,8 +1,4 @@
-from typing import Union, IO, Optional, Any
-from typing_extensions import Self
-
 import pytorch_lightning as pl
-from lightning_fabric.utilities.types import _PATH, _MAP_LOCATION_TYPE
 from transformers import get_linear_schedule_with_warmup, AdamW
 
 
@@ -49,7 +45,7 @@ class SummaryModel(pl.LightningModule):
         return loss
 
     def configure_optimizers(self):
-        optimizer = AdamW(self.model.parameters(), lr=0.0001)
+        optimizer = AdamW(self.parameters(), lr=0.0001)
         scheduler = get_linear_schedule_with_warmup(
             optimizer, num_warmup_steps=0,
             num_training_steps=self.total_step)
