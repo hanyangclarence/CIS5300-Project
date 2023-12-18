@@ -99,9 +99,6 @@ if __name__ == "__main__":
 
     # setup model
     summary_model = SummaryModel(model=MODEL, total_step=EPOCHS * len(df))
-    for p in summary_model.parameters():
-        p.requires_grad = True
-    summary_model.train()
 
     # setup trainer
     trainer = pl.Trainer(

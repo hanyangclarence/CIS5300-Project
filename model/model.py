@@ -1,5 +1,6 @@
 import pytorch_lightning as pl
-from transformers import get_linear_schedule_with_warmup, AdamW
+from transformers import get_linear_schedule_with_warmup
+from torch.optim import AdamW
 
 
 class SummaryModel(pl.LightningModule):
@@ -22,7 +23,6 @@ class SummaryModel(pl.LightningModule):
         decoder_attention_mask = batch["summary_mask"]
 
         loss, output = self(input_ids, attention_mask, labels, decoder_attention_mask)
-        loss.requires_grad = True
         self.log("train_loss", loss.item())
 
         return loss
