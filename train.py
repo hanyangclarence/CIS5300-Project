@@ -4,7 +4,7 @@ import pandas as pd
 from transformers import T5Tokenizer
 import xml.etree.ElementTree as ET
 import pytorch_lightning as pl
-from lightning.pytorch.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks import ModelCheckpoint
 
 from model.model import SummaryModel
 from model.dataset import SummaryDataModule
