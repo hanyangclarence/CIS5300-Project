@@ -5,6 +5,7 @@ from transformers import T5Tokenizer
 import xml.etree.ElementTree as ET
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning import seed_everything
 
 from model.model import SummaryModel
 from model.dataset import SummaryDataModule
@@ -18,6 +19,7 @@ EPOCHS = 10
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 if __name__ == "__main__":
+    seed_everything(23)
 
     TOKENIZER = T5Tokenizer.from_pretrained(model_name)
 
