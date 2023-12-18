@@ -22,8 +22,8 @@ class SummaryModel(pl.LightningModule):
         decoder_attention_mask = batch["summary_mask"]
 
         loss, output = self(input_ids, attention_mask, labels, decoder_attention_mask)
-        print("!!!!!!!!!", loss.requires_grad, output.requires_grad)
-        self.log("train_loss", loss)
+        loss.requires_grad = True
+        self.log("train_loss", loss.item())
 
         return loss
 
@@ -34,7 +34,7 @@ class SummaryModel(pl.LightningModule):
         decoder_attention_mask = batch["summary_mask"]
 
         loss, output = self(input_ids, attention_mask, labels, decoder_attention_mask)
-        self.log("val_loss", loss)
+        self.log("val_loss", loss.item())
 
         return loss
 
