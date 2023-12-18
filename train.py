@@ -1,23 +1,24 @@
 import torch.cuda
 from tqdm import tqdm
 import pandas as pd
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+from transformers import T5Tokenizer
 import xml.etree.ElementTree as ET
 import pytorch_lightning as pl
 
 from model.model import SummaryModel
 from model.dataset import SummaryDataModule
 
+# Hyperparameters
+model_name = 't5-base'
+TEXT_LEN = 1024
+SUM_LEN = 512
+BATCH_SIZE = 5
+EPOCHS = 10
+DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+
 if __name__ == "__main__":
 
-    # Hyperparameters
-    MODEL = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
-    TOKENIZER = T5Tokenizer.from_pretrained("t5-base")
-    BATCH_SIZE = 5
-    TEXT_LEN = 1024
-    SUM_LEN = 512
-    EPOCHS = 10
-    DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    TOKENIZER = T5Tokenizer.from_pretrained(model_name)
 
     # Preprocessing
     fd_train = open('data/train.txt', 'r')
@@ -98,7 +99,7 @@ if __name__ == "__main__":
     next(iter(summary_module.train_dataloader().dataset))
 
     # setup model
-    summary_model = SummaryModel(model=MODEL, total_step=EPOCHS * len(df))
+    summary_model = SummaryModel(model_name=model_name, total_step=EPOCHS * len(df))
 
     # setup trainer
     trainer = pl.Trainer(

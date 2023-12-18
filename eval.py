@@ -4,7 +4,7 @@ from tqdm import tqdm
 import xml.etree.ElementTree as ET
 import pandas as pd
 
-from train import TEXT_LEN, SUM_LEN
+from train import TEXT_LEN, SUM_LEN, model_name
 from model.model import SummaryModel
 
 
@@ -28,9 +28,10 @@ def summarize(text):
 
 if __name__ == "__main__":
     rouge_score = Rouge()
-    TOKENIZER = T5Tokenizer.from_pretrained("t5-base")
-    resume_ckpt = ''
+    TOKENIZER = T5Tokenizer.from_pretrained(model_name)
+    resume_ckpt = './lightning_logs/version_3/checkpoints/epoch=9-step=1610.ckpt'
     summary_model = SummaryModel.load_from_checkpoint(resume_ckpt)
+    summary_model.eval()
 
     # prepare test data
     fd_test = open('data/test.txt', 'r')

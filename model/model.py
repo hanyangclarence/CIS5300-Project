@@ -1,12 +1,13 @@
 import pytorch_lightning as pl
 from transformers import get_linear_schedule_with_warmup
 from torch.optim import AdamW
+from transformers import T5ForConditionalGeneration
 
 
 class SummaryModel(pl.LightningModule):
-    def __init__(self, model, total_step):
+    def __init__(self, model_name="t5-base", total_step=None):
         super(SummaryModel, self).__init__()
-        self.model = model
+        self.model = T5ForConditionalGeneration.from_pretrained(model_name, return_dict=True)
         self.total_step = total_step
 
     def forward(self, input_ids, attention_mask, labels=None, decoder_attention_mask=None):
