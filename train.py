@@ -2,13 +2,14 @@ import torch.cuda
 from tqdm import tqdm
 import pandas as pd
 from transformers import T5Tokenizer
-import xml.etree.ElementTree as ET
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning import seed_everything
 
+from rouge import Rouge
 from model.model import SummaryModel
 from model.dataset import SummaryDataModule
+from model.parse_data import parse_data_base, parse_data_improved
 
 # Hyperparameters
 model_name = 't5-base'
@@ -16,12 +17,30 @@ TEXT_LEN = 1024
 SUM_LEN = 512
 BATCH_SIZE = 5
 EPOCHS = 10
+MAX_SENTENCE_PER_SEC = 2
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+
+
+def summarize(text_input):
+    inputs = TOKENIZER(text_input,
+                       max_length=TEXT_LEN,
+                       truncation=True,
+                       padding="max_length",
+                       add_special_tokens=True,
+                       return_tensors="pt")
+    summarized_ids = summary_model.model.generate(
+        input_ids=inputs["input_ids"],
+        attention_mask=inputs["attention_mask"],
+        num_beams=1,
+        do_sample=False,
+        max_length=SUM_LEN)
+
+    return " ".join([TOKENIZER.decode(token_ids, skip_special_tokens=True)
+                     for token_ids in summarized_ids])
+
 
 if __name__ == "__main__":
     seed_everything(23)
-
-    TOKENIZER = T5Tokenizer.from_pretrained(model_name)
 
     # Preprocessing
     fd_train = open('data/train.txt', 'r')
@@ -37,58 +56,21 @@ if __name__ == "__main__":
     fd_val.close()
 
     train_data = []
-    for i in tqdm(range(len(train_list)), desc="Training data"):
-        file = train_list[i]
-        try:
-            tree = ET.parse("data/top1000_complete/" + file + "/Documents_xml/" + file + ".xml")
-            root = tree.getroot()
-            xmlstr = " ".join([elem.text for elem in root.findall('.//S') if elem.text is not None])
-
-            summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'r')
-            summary_str = summary.read()
-            summary.close()
-
-            train_data.append([summary_str, xmlstr])
-        except:
-            pass
-
+    # parse_data_base(train_list, train_data)
+    parse_data_improved(train_list, train_data, MAX_SENTENCE_PER_SEC)
     train_df = pd.DataFrame(train_data, columns=['Summary', 'Text'])
 
     test_data = []
-    for i in tqdm(range(len(test_list)), desc='Test data'):
-        file = test_list[i]
-        try:
-            tree = ET.parse("data/top1000_complete/" + file + "/Documents_xml/" + file + ".xml")
-            root = tree.getroot()
-            xmlstr = " ".join([elem.text for elem in root.findall('.//S') if elem.text is not None])
-
-            summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'r')
-            summary_str = summary.read()
-            summary.close()
-
-            test_data.append([summary_str, xmlstr])
-        except:
-            pass
-
+    # parse_data_base(test_list, test_data)
+    parse_data_improved(test_list, test_data, MAX_SENTENCE_PER_SEC)
     test_df = pd.DataFrame(test_data, columns=['Summary', 'Text'])
 
     val_data = []
-    for i in tqdm(range(len(val_list)), desc='Val data'):
-        file = val_list[i]
-        try:
-            tree = ET.parse("data/top1000_complete/" + file + "/Documents_xml/" + file + ".xml")
-            root = tree.getroot()
-            xmlstr = " ".join([elem.text for elem in root.findall('.//S') if elem.text is not None])
-
-            summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'r')
-            summary_str = summary.read()
-            summary.close()
-
-            val_data.append([summary_str, xmlstr])
-        except:
-            pass
-
+    # parse_data_base(val_list, val_data)
+    parse_data_improved(val_list, val_data, MAX_SENTENCE_PER_SEC)
     val_df = pd.DataFrame(val_data, columns=['Summary', 'Text'])
+
+    print(f'Train: {len(train_data)}, Test: {len(test_data)}, Val: {len(val_data)}')
 
     # Final dataframe
     df = pd.concat([train_df, test_df, val_df], ignore_index=True)
@@ -97,6 +79,7 @@ if __name__ == "__main__":
     test_df = test_df.reset_index(drop=True)
 
     # setup dataset module
+    TOKENIZER = T5Tokenizer.from_pretrained(model_name)
     summary_module = SummaryDataModule(train_df, val_df, test_df, BATCH_SIZE, TOKENIZER, TEXT_LEN, SUM_LEN)
     summary_module.setup()
     next(iter(summary_module.train_dataloader().dataset))
@@ -118,9 +101,32 @@ if __name__ == "__main__":
 
     print(f'Train done, best model saved in {checkpoint_callback.best_model_path}')
 
+    # evaluate the best model
+    rouge_score = Rouge()
+    summary_model = SummaryModel.load_from_checkpoint(checkpoint_callback.best_model_path)
+    summary_model.eval()
 
+    gts = []
+    pred = []
+    f_gt = open('sum_gt.txt', 'w')
+    f_pred = open('sum_pred.txt', 'w')
+    for i in tqdm(range(len(test_df['Text'])), desc='Infer'):
+        text = test_df['Text'][i]
+        gt_sum = test_df['Summary'][i]
+        gts.append(gt_sum)
+        pred_sum = summarize(text)
+        pred.append(pred_sum)
 
+        f_gt.writelines(gt_sum)
+        f_pred.writelines(pred_sum)
+        print(f'GT: [{gt_sum}]')
+        print(f'PRED: [{pred_sum}]')
 
+    f_gt.close()
+    f_pred.close()
+
+    scores = rouge_score.get_scores(pred, gts, avg=True)
+    print(scores)
 
 
 
