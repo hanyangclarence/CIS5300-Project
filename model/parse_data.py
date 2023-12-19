@@ -3,6 +3,13 @@ from tqdm import tqdm
 import os
 
 
+def has_numeric(s):
+    for c in s:
+        if c.isnumeric():
+            return True
+    return False
+
+
 def parse_data_base(source_data_list: list, parsed_res_list: list):
     for i in tqdm(range(len(source_data_list)), desc='Parsing'):
         file = source_data_list[i]
@@ -21,7 +28,7 @@ def parse_data_base(source_data_list: list, parsed_res_list: list):
 
 
 def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sentence_per_sec):
-    for i in tqdm(range(len(source_data_list))):
+    for i in tqdm(range(len(source_data_list)), desc='Parsing data'):
         file = source_data_list[i]
         xml_path = os.path.join('data/top1000_complete', file, 'Documents_xml', file + '.xml')
         if not os.path.exists(xml_path):
@@ -50,6 +57,9 @@ def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sente
                     # add all sentences in conclusion section
                     for sub_child in child:
                         text.append(sub_child.text + '\n')
+                elif 'acknowledgement' in section_title:
+                    # do not include anything in acknowledgement
+                    continue
                 else:
                     count = 0
                     child_it = iter(child)
@@ -60,7 +70,28 @@ def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sente
                             count += 1
                         except StopIteration:
                             break
-        final_text = ''.join(text)
+            elif child.tag == 'S':
+                if child.attrib['sid'] == '0':
+                    # title has already been added, just skip
+                    continue
+                if child.text is not None:
+                    text.append(child.text + '\n')
+
+        # filter out noisy sentences
+        selected_text = []
+        for i_sent, sent in enumerate(text):
+            if len(sent.split(' ')) > 50:  # too many numbers
+                if sum([has_numeric(w) for w in sent.split(' ')]) / len(sent.split(' ')) > 0.15:
+                    continue
+            if len(sent.split(' ')) <= 4:  # too short
+                if i_sent != 0:
+                    continue
+            if len(sent.split(' ')) > 30:  # too many symbols/incomplete words
+                if sum([len(w) <= 2 for w in sent.split(' ')]) / len(sent.split(' ')) > 0.4:
+                    continue
+            selected_text.append(sent)
+
+        final_text = ''.join(selected_text)
 
         summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'rb')
         summary_str = summary.read()
