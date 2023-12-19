@@ -1,10 +1,10 @@
 from rouge import Rouge
 from transformers import T5Tokenizer
 from tqdm import tqdm
-import xml.etree.ElementTree as ET
+from model.parse_data import parse_data_improved
 import pandas as pd
 
-from train import TEXT_LEN, SUM_LEN, model_name
+from train import TEXT_LEN, SUM_LEN, model_name, MAX_SENTENCE_PER_SEC
 from model.model import SummaryModel
 
 
@@ -18,8 +18,8 @@ def summarize(text):
     summarized_ids = summary_model.model.generate(
         input_ids=inputs["input_ids"],
         attention_mask=inputs["attention_mask"],
-        num_beams=1,
-        do_sample=False,
+        num_beams=4,
+        do_sample=True,
         max_length=SUM_LEN)
 
     return " ".join([TOKENIZER.decode(token_ids, skip_special_tokens=True)
@@ -29,7 +29,7 @@ def summarize(text):
 if __name__ == "__main__":
     rouge_score = Rouge()
     TOKENIZER = T5Tokenizer.from_pretrained(model_name)
-    resume_ckpt = './lightning_logs/version_3/checkpoints/epoch=9-step=1610.ckpt'
+    resume_ckpt = './lightning_logs/version_0/checkpoints/epoch=6-step=1120.ckpt'
     summary_model = SummaryModel.load_from_checkpoint(resume_ckpt)
     summary_model.eval()
 
@@ -39,21 +39,8 @@ if __name__ == "__main__":
     fd_test.close()
 
     test_data = []
-    for i in tqdm(range(len(test_list)), desc='Test data'):
-        file = test_list[i]
-        try:
-            tree = ET.parse("data/top1000_complete/" + file + "/Documents_xml/" + file + ".xml")
-            root = tree.getroot()
-            xmlstr = " ".join([elem.text for elem in root.findall('.//S') if elem.text is not None])
-
-            summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'r')
-            summary_str = summary.read()
-            summary.close()
-
-            test_data.append([summary_str, xmlstr])
-        except:
-            pass
-
+    # parse_data_base(test_list, test_data)
+    parse_data_improved(test_list, test_data, MAX_SENTENCE_PER_SEC)
     test_df = pd.DataFrame(test_data, columns=['Summary', 'Text'])
 
     gts = []
