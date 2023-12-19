@@ -60,7 +60,12 @@ def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sente
                 elif 'acknowledgement' in section_title:
                     # do not include anything in acknowledgement
                     continue
+                elif section_title == '' and child.attrib['number'] == '1':
+                    # on observation, these paragraphs are also important, just include all
+                    for sub_child in child:
+                        text.append(sub_child.text + '\n')
                 else:
+                    # include the first few sentences only
                     count = 0
                     child_it = iter(child)
                     while count < max_sentence_per_sec:
@@ -70,7 +75,8 @@ def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sente
                             count += 1
                         except StopIteration:
                             break
-            elif child.tag == 'S':
+            elif child.tag == 'S':  # special case that there is no 'abstract', 'intro' ... structures in the file,
+                # so just add all sentences
                 if child.attrib['sid'] == '0':
                     # title has already been added, just skip
                     continue
@@ -80,15 +86,21 @@ def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sente
         # filter out noisy sentences
         selected_text = []
         for i_sent, sent in enumerate(text):
-            if len(sent.split(' ')) > 50:  # too many numbers
-                if sum([has_numeric(w) for w in sent.split(' ')]) / len(sent.split(' ')) > 0.15:
+            n_word = len(sent.split(' '))
+            if n_word > 50:  # too many numbers
+                if sum([has_numeric(w) for w in sent.split(' ')]) / n_word > 0.15:
                     continue
-            if len(sent.split(' ')) <= 4:  # too short
+            if n_word <= 4:  # too short
                 if i_sent != 0:
                     continue
-            if len(sent.split(' ')) > 30:  # too many symbols/incomplete words
-                if sum([len(w) <= 2 for w in sent.split(' ')]) / len(sent.split(' ')) > 0.4:
+            if n_word > 30:  # too many symbols/incomplete words
+                if sum([len(w) <= 2 for w in sent.split(' ')]) / n_word > 0.4:
                     continue
+            if n_word > 20:  # contains too many '/'
+                if sum([('/' in w) for w in sent.split(' ')]) / n_word > 0.2:
+                    continue
+            if sent in selected_text:  # remove duplicated sentences
+                continue
             selected_text.append(sent)
 
         final_text = ''.join(selected_text)
