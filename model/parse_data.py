@@ -104,6 +104,7 @@ def parse_data_improved(source_data_list: list, parsed_res_list: list, max_sente
             selected_text.append(sent)
 
         final_text = ''.join(selected_text)
+        final_text = 'summarize: ' + f'\"{final_text}\"'
 
         summary = open('data/top1000_complete/' + file + "/summary/" + file + ".gold.txt", 'rb')
         summary_str = summary.read()
