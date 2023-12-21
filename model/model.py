@@ -55,7 +55,7 @@ class SummaryModel(pl.LightningModule):
 
 
 class SummaryModelLongT5(pl.LightningModule):
-    def __init__(self, model_name="Stancld/longt5-tglobal-large-16384-pubmed-3k_steps", total_step=None):
+    def __init__(self, model_name='google/long-t5-local-base', total_step=None):
         super(SummaryModelLongT5, self).__init__()
         self.model = LongT5ForConditionalGeneration.from_pretrained(model_name, return_dict=True)
         self.total_step = total_step
