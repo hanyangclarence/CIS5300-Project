@@ -13,7 +13,7 @@ from model.parse_data import parse_data_longT5
 
 # Hyperparameters
 model_name = 'google/long-t5-local-base'
-TEXT_LEN = 2048
+TEXT_LEN = 1024
 SUM_LEN = 512
 BATCH_SIZE = 5
 EPOCHS = 10
