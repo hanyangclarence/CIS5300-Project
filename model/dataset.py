@@ -17,7 +17,7 @@ class SummaryDataset(Dataset):
 
     def __getitem__(self, idx):
         # T5 transformers performs different tasks by prepending the particular prefix to the input text.
-        text = "summarize:" + str(self.text[idx])                # In order to avoid dtype mismatch, as T5 is text-to-text transformer, the datatype must be string
+        text = str(self.text[idx])                # In order to avoid dtype mismatch, as T5 is text-to-text transformer, the datatype must be string
         headline = str(self.summaries[idx])
 
         text_tokenizer = self.tokenizer(text, max_length=self.text_len, padding="max_length",
