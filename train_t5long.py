@@ -12,7 +12,7 @@ from model.dataset import SummaryDataModule
 from model.parse_data import parse_data_longT5
 
 # Hyperparameters
-model_name = "Stancld/longt5-tglobal-large-16384-pubmed-3k_steps"
+model_name = "Stancld/longt5-tglobal-base-16384-pubmed-3k_steps"
 TEXT_LEN = 2048
 SUM_LEN = 512
 BATCH_SIZE = 5
