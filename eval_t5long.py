@@ -58,6 +58,7 @@ if __name__ == "__main__":
         f_pred.writelines(pred_sum)
         print(f'GT: [{gt_sum}]')
         print(f'PRED: [{pred_sum}]')
+        print(len(gts), len(pred))
 
     f_gt.close()
     f_pred.close()
