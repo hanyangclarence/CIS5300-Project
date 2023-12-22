@@ -29,7 +29,7 @@ def summarize(text):
 if __name__ == "__main__":
     rouge_score = Rouge()
     TOKENIZER = T5Tokenizer.from_pretrained(model_name)
-    resume_ckpt = 'lightning_logs/model_1/checkpoints/epoch=6-step=1120.ckpt'
+    resume_ckpt = 'lightning_logs/version_1254483/checkpoints/epoch=6-step=1120.ckpt'
     summary_model = SummaryModel.load_from_checkpoint(resume_ckpt)
     summary_model.eval()
 
