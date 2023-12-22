@@ -48,16 +48,17 @@ if __name__ == "__main__":
     f_gt = open('sum_gt.txt', 'w')
     f_pred = open('sum_pred.txt', 'w')
     for i in tqdm(range(len(test_df['Text'])), desc='Infer'):
-        text = test_df['Text'][i]
-        gt_sum = test_df['Summary'][i]
+        text = str(test_df['Text'][i])
+        gt_sum = str(test_df['Summary'][i])
         gts.append(gt_sum)
         pred_sum = summarize(text)
         pred.append(pred_sum)
 
-        f_gt.writelines(gt_sum)
-        f_pred.writelines(pred_sum)
+        f_gt.write(gt_sum + '\n\n\n')
+        f_pred.write(pred_sum + '\n\n\n')
         print(f'GT: [{gt_sum}]')
         print(f'PRED: [{pred_sum}]')
+
         scores = rouge_score.get_scores(pred, gts, avg=True)
         print(scores)
 
