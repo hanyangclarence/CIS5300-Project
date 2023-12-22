@@ -58,7 +58,8 @@ if __name__ == "__main__":
         f_pred.writelines(pred_sum)
         print(f'GT: [{gt_sum}]')
         print(f'PRED: [{pred_sum}]')
-        print(len(gts), len(pred))
+        scores = rouge_score.get_scores(pred, gts, avg=True)
+        print(scores)
 
     f_gt.close()
     f_pred.close()
