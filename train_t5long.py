@@ -113,8 +113,12 @@ if __name__ == "__main__":
     for i in tqdm(range(len(test_df['Text'])), desc='Infer'):
         text = test_df['Text'][i]
         gt_sum = test_df['Summary'][i]
-        gts.append(gt_sum)
+
         pred_sum = summarize(text)
+        if len(pred_sum) == 0:
+            continue
+
+        gts.append(gt_sum)
         pred.append(pred_sum)
 
         f_gt.writelines(gt_sum)
