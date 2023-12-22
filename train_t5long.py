@@ -13,11 +13,11 @@ from model.parse_data import parse_data_longT5
 
 # Hyperparameters
 model_name = 'google/long-t5-local-base'
-TEXT_LEN = 2048
+TEXT_LEN = 5000
 SUM_LEN = 512
 BATCH_SIZE = 3
 EPOCHS = 30
-MAX_SENTENCE_PER_SEC = 2
+MAX_SENTENCE_PER_SEC = 100
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 
