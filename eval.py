@@ -18,8 +18,8 @@ def summarize(text):
     summarized_ids = summary_model.model.generate(
         input_ids=inputs["input_ids"],
         attention_mask=inputs["attention_mask"],
-        num_beams=4,
-        do_sample=True,
+        num_beams=1,
+        do_sample=False,
         max_length=SUM_LEN)
 
     return " ".join([TOKENIZER.decode(token_ids, skip_special_tokens=True)
