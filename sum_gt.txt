@@ -1,0 +1,1143 @@
+1 GT: Trainable Methods For Surface Natural Language Generation
+We present three systems for surface natural language generation that are trainable from annotated corpora.
+The first two systems, called NLG1 and NLG2, require a corpus marked only with domain-specific semantic attributes, while the last system, called NLG3, requires a corpus marked with both semantic attributes and syntactic dependency information.
+All systems attempt to produce a grammatical natural language phrase from a domain-specific semantic representation.
+NLG1 serves a baseline system and uses phrase frequencies to generate a whole phrase in one step, while NLG2 and NLG3 use maximum entropy probability models to individually generate each word in the phrase.
+The systems NLG2 and NLG3 learn to determine both the word choice and the word order of the phrase.
+We present experiments in which we generate phrases to describe flights in the air travel domain.
+We use maximum entropy models to drive generation with word bigram or dependency representations taking into account (unrealised) semantic features.
+We use a large collection of generation templates for surface realization.
+We present maximum entropy models to learn attribute ordering and lexical choice for sentence generation from a semantic representation of attribute-value pairs, restricted to an air travel domain.
+
+
+
+2 GT: Applied Text Generation
+We divide tasks in the generation process into three stages: the text planner has access only to information about communicative goals, the discourse context, and semantics, and generates a non-linguistic representation of text structure and content. The sentence planner chooses abstract linguistic resources. It passes an abstract lexico-syntactic specification5 to the Realizer, which inflects, adds function words, and linearizes, thus producing the surface string.
+
+
+
+3 GT: Three Heads Are Better Than One
+Machine translation (MT) systems do not currently achieve optimal quality translation on free text, whatever translation method they employ.
+Our hypothesis is that the quality of MT will improve if an MT environment uses output from a variety of MT systems working on the same text.
+In the latest version of the Pan-gloss MT project, we collect the results of three translation engines -- typically, sub-sentential chunks -- in a chart data structure.
+Since the individual MT systems operate completely independently, their re- sults may be incomplete, conflicting, or redundant.
+We use simple scoring heuristics to estimate the quality of each chunk, and find the highest-score sequence of chunks (the "best cover").
+This paper describes in detail the combining method, presenting the algorithm and illustrations of its progress on one of many actual translations it has produced.
+It uses dynamic programming to efficiently compare weighted averages of sets of adjacent scored component translations.
+The current system operates primarily in a human-aided MT mode.
+The translation delivery system and its associated post-editing aide are briefly described, as is an initial evaluation of the usefulness of this method.
+Individual MT engines will be reported separately and are not, therefore, described in detail here.
+We produce the first MEMT system by combining outputs from three different MT engines based on their knowledge of the inner workings of the engines.
+We develop a multi-engine MT system, which builds a chart using the translation units inside each input system and then uses a chart walk algorithm to find the best cover of the source sentence.
+
+
+
+4 GT: Effects Of Adjective Orientation And Gradability On Sentence Subjectivity
+Subjectivity is a pragmatic, sentence-level feature that has important implications for text processing applications such as information extraction and information retrieval.
+We study the effects of dynamic adjectives, semantically oriented adjectives, and gradable adjectives on a simple subjectivity classifier, and establish that they are strong predictors of subjectivity.
+A novel trainable method that statistically combines two indicators of gradability is presented and evaluated, complementing existing automatic techniques for assigning orientation labels.
+Unlike nouns, many adjectives are inherently subjective, and the number of adjectives in texts correlates with human judgements of their subjectivity.
+We report a statistical correlation between the number of adjectives in a text and human judgments of subjectivity.
+We show that automatically detected gradable adjectives are a useful feature for subjectivity classification.
+
+
+
+5 GT: More Accurate Tests For The Statistical Significance Of Result Differences
+Statistical significance testing of differences in values of metrics like recall, precision and balanced F-score is a necessary part of empirical natural language processing.
+Unfortunately, we find in a set of experiments that many commonly used tests often underestimate the significance and so are less likely to detect differences that exist between different techniques.
+This underestimation comes from an independence assumption that is often violated.
+We point out some useful tests that do not make this assumption, including computationally-intensive randomization tests.
+Standard deviations for F scores are estimated with bootstrap resampling.
+
+
+
+6 GT: A Graph Model For Unsupervised Lexical Acquisition
+This paper presents an unsupervised method for assembling semantic knowledge from a part-of-speech tagged corpus using graph algorithms.
+The graph model is built by linking pairs of words which participate in particular syntactic relationships.
+We focus on the symmetric relationship between pairs of nouns which occur together in lists.
+An incremental cluster-building algorithm using this part of the graph achieves 82% accuracy at a lexical acquisition task, evaluated against WordNet classes.
+The model naturally realises domain and corpus specific ambiguities as distinct components in the graph surrounding an ambiguous word.
+We try to find graph regions that are more connected internally than externally.
+
+
+
+7 GT: Building A Large-Scale Annotated Chinese Corpus
+In this paper we address issues related to building a large-scale Chinese corpus.
+We try to answer four questions: (i) how to speed up annotation, (ii) how to maintain high annotation quality, (iii) for what purposes is the corpus applicable, and finally (iv) what future work we anticipate.
+
+
+
+8 GT: Wide-Coverage Semantic Representations From A CCG Parser
+This paper shows how to construct semantic representations from the derivations produced by a wide-coverage CCG parser.
+Unlike the dependency structures returned by the parser itself, these can be used directly for semantic interpretation.
+We demonstrate that well-formed semantic representations can be produced for over 97% of the sentences in unseen WSJ text.
+We believe this is a major step towards wide-coverage semantic interpretation, one of the key objectives of the field of NLP.
+We present an algorithm that learns CCG lexicons with semantics but requires fully specified CCG derivations in the training data.
+We consider the challenging problem of constructing broad-coverage semantic representations with CCG, but do not learn the lexicon.
+
+
+
+9 GT: A Classifier-Based Approach to Preposition and Determiner Error Correction in L2 English
+In this paper, we present an approach to the automatic identification and correction of preposition and determiner errors in non-native (L2) English writing.
+We show that models of use for these parts of speech can be learned with an accuracy of 70.06% and 92.15% respectively on L1 text, and present first results in an error detection task for L2 writing.
+In the context of automated preposition and determiner error correction in L2 English, we note that the process is often disrupted by misspellings.
+
+
+
+10 GT: A Monolingual Tree-based Translation Model for Sentence Simplification
+In this paper, we consider sentence simplification as a special form of translation with the complex sentence as the source and the simple sentence as the target.
+We propose a Tree-based Simplification Model (TSM), which, to our knowledge, is the first statistical simplification model covering splitting, dropping, reordering and substitution integrally.
+We also describe an efficient method to train our model with a large-scale parallel dataset obtained from the Wikipedia and Simple Wikipedia.
+The evaluation shows that our model achieves better readability scores than a set of baseline systems.
+We use a tree-based simplification model which uses techniques from statistical machine translation (SMT) with this data set.
+We examine the use of paired documents in English Wikipedia and Simple Wikipediafor a data-driven approach to the sentence simplification task.
+We propose sentence simplification can be approached as a monolingual machine translation task, where the source and target languages are the same and where the output should be simpler in form from the input but similar in meaning.
+
+
+
+11 GT: Categorial Unification Grammars
+Categorial unification grammars (CUGs) embody the essential properties of both unification and categorial grammar formalisms.
+Their efficient and uniform way of encoding linguistic knowledge in well-understood and widely used representations makes them attractive for computational applications and for linguistic research.
+In this paper, the basic concepts of CUGs and simple examples of their application will be presented.
+It will be argued that the strategies and potentials of CUGs justify their further exploration in the wider context of research on unification grammars.
+Approaches to selected linguistic phenomena such as long-distance dependencies, adjuncts, word order, and extraposition are discussed.
+
+
+
+12 GT: A Uniform Architecture For Parsing And Generation
+The use of a single grammar for both parsing and generation is an idea with a certain elegance, the desirability of which several researchers have noted.
+In this paper, we discuss a more radical possibility: not only can a single grammar be used by different processes engaged in various "directions" of processing, but one and the same language-processing architecture can be used for processing the grammar in the various modes.
+In particular, parsing and generation can be viewed as two processes engaged in by a single parameterized theorem prover for the logical interpretation of the formalism.
+We discuss our current implementation of such an architecture, which is parameterized in such a way that it can be used for either purpose with grammars written in the PATR formalism.
+Furthermore, the architecture allows fine tuning to reflect different processing strategies, including parsing models intended to mimic psycholinguistic phenomena.
+This tuning allows the parsing system to operate within the same realm of efficiency as previous architectures for parsing alone, but with much greater flexibility for engaging in other processing regimes.
+We state that to guarantee completeness in using a precomputed entry in the chart, the entry must subsume the formula being generated top-down.
+
+
+
+13 GT: Synchronous Tree-Adjoining Grammars
+The unique properties of Tree-adjoining grammars (TAG) present a challenge for the application of TAGs beyond the limited confines of syntax, for instance, to the task of semantic interpretation or automatic translation of natural language.
+We present a variant of TAGs, called synchronous TAGs, which characterize correspondences between languages.
+The formalism's intended usage is to relate expressions of natural languages to their associated semantics represented in a logical form language, or to their translates in another natural language; in summary, we intend it to allow TAGs to be used beyond their role in syntax proper.
+We discuss the application of synchronous TAGs to concrete examples, mentioning primarily in passing some computational issues that arise in its interpretation.
+Synchronous Tree Adjoining Grammars is introduced primarily for semantics but will be later also proposed for translation.
+A synchronous derivation process for the two syntactic structures of both languages suggests the level of cross-lingual isomorphism between the two trees (e.g. Synchronous Tree Adjoining Grammars.
+
+
+
+14 GT: Stochastic Lexicalized Tree-Adjoining Grammars
+The notion of stochastic lexicalized tree-adjoining grammar (SLTAG) is formally defined.
+The parameters of a SLTAG correspond to the probability of combining two structures each one associated with a word.
+The characteristics of SLTAG are unique and novel since it is lexically sensitive (as N-gram models or Hidden Markov Models) and yet hierarchical (as stochastic context-free grammars).
+Then, two basic algorithms for SLTAG arc introduced: an algorithm for computing the probability of a sentence generated by a SLTAG and an inside-outside- like iterative algorithm for estimating the parameters of a SLTAG given a training corpus.
+Finally, we should how SLTAG enables to define a lexicalized version of stochastic context-free grammars and we report preliminary experiments showing some of the advantages of SLTAG over stochastic context-free grammars.
+In stochastic tree-adjoining grammar, this lack of context-sensitivity is overcome by assigning probabilities to larger structural units.
+
+
+
+15 GT: Anaphora For Everyone: Pronominal Anaphora Resolution Without A Parser
+We present an algorithm for anaphora resolution which is a modified and extended version of that developed by (Lappin and Leass, 1994).
+In contrast to that work, our algorithm does not require in-depth, full, syntactic parsing of text.
+Instead, with minimal compromise in output quality, the modifications enable the resolution process to work from tile output of a part of speech tagger, enriched only with annotations of grammatical function of lexical items in the in-put text stream.
+Evaluation of the results of our implementation demonstrates that accurate anaphora resolution can be realized within natural language processing frameworks which do not -- cannot -- employ robust and reliable parsing components.
+We also suggest that anaphora resolution is part of the discourse referents resolution.
+
+
+
+16 GT: Message Understanding Conference-6: A Brief History
+We have recently completed the sixth in a series of "Message Understanding Conferences" which are designed to promote and evaluate research in information extraction.
+MUC-6 introduced several innovations over prior MUCs, most notably in the range of different tasks for which evaluations were conducted.
+We describe some of the motivations for the new format and briefly discuss some of the results of the evaluations.
+We demostrate that grammar-based IE systems can be effective in many scenarios.
+We introduce name recognition and classification tasks.
+
+
+
+17 GT: Polylingual Topic Models
+Topic models are a useful tool for analyzing large text collections, but have previously been applied in only monolingual, or at most bilingual, contexts.
+Meanwhile, massive collections of interlinked documents in dozens of languages, such as Wikipedia, are now widely available, calling for tools that can characterize content in many languages.
+We introduce a polylingual topic model that discovers topics aligned across multiple languages.
+We explore the model’s characteristics using two large corpora, each with over ten different languages, and demonstrate its usefulness in supporting machine translation and tracking topic trends across languages.
+We retrieve a list of potential translations simply by selecting a small number N of the most probable words in both languages and then add the Cartesian product of these sets for every topic to a set of candidate translations.
+We show that so long as the proportion of topically-aligned to non-aligned documents exceeded 0.25, the topic distributions (as measured by mean Jensen-Shannon Divergence between distributions) does not degrade significantly.
+We extend the original concept of LDA to support polylingual topic models (PLTM), both on parallel (such as EuroParl) and partly comparable documents (such as Wikipedia articles).
+Polylingual topic models learn topics for multiple languages, creating tuples of language specific distributions over monolingual vocabularies for each topic.
+
+
+
+18 GT: A Multi-Pass Sieve for Coreference Resolution
+Most coreference resolution models determine if two mentions are coreferent using a single function over a set of constraints or features.
+This approach can lead to incorrect decisions as lower precision features often overwhelm the smaller number of high precision ones.
+To overcome this problem, we propose a simple coreference architecture based on a sieve that applies tiers of deterministic coreference models one at a time from highest to lowest precision.
+Each tier builds on the previous tier’s entity cluster output.
+Further, our model propagates global information by sharing attributes (e.g., gender and number) across mentions in the same cluster.
+This cautious sieve guarantees that stronger features are given precedence over weaker ones and that each decision is made using all of the information available at the time.
+The framework is highly modular: new coreference modules can be plugged in without any change to the other modules.
+In spite of its simplicity, our approach outperforms many state-of-the-art supervised and unsupervised models on several standard corpora.
+This suggests that sieve-based approaches could be applied to other NLP tasks.
+Our rule based model obtains competitive result with less time.
+The candidate antecedents for the pronoun are ordered based on a notion of discourse salience that favors syntactic salience and document proximity.
+We develop accurate unsupervised systems that exploit simple but robust linguistic principles.
+
+
+
+19 GT: Inducing Probabilistic CCG Grammars from Logical Form with Higher-Order Unification
+This paper addresses the problem of learning to map sentences to logical form, given training data consisting of natural language sentences paired with logical representations of their meaning.
+Previous approaches have been designed for particular natural languages or specific meaning representations; here we present a more general method.
+The approach induces a probabilistic CCG grammar that represents the meaning of individual words and defines how these meanings can be combined to analyze complete sentences.
+We use higher-order unification to define a hypothesis space containing all grammars consistent with the training data, and develop an online learning algorithm that efficiently searches this space while simultaneously estimating the parameters of a log-linear parsing model.
+Experiments demonstrate high accuracy on benchmark data sets in four languages with two different meaning representations.
+We present an approach for language-independent learning that replaces the hand-specified templates with a higher-order-unification-based lexical induction method.
+We initialise lexical weights in their learning algorithm using corpus-wide alignment statistics across words and meaning elements.
+
+
+
+20 GT: Multi-Source Transfer of Delexicalized Dependency Parsers
+We present a simple method for transferring dependency parsers from source languages with labeled training data to target languages without labeled training data.
+We first demonstrate that delexicalized parsers can be directly transferred between languages, producing significantly higher accuracies than unsupervised parsers.
+We then use a constraint driven learning algorithm where constraints are drawn from parallel corpora to project the final parser.
+Unlike previous work on projecting syntactic resources, we show that simple methods for introducing multiple source languages can significantly improve the overall quality of the resulting parsers.
+The projected parsers from our system result in state-of-the-art performance when compared to previously studied unsupervised and projected parsing systems across eight different languages.
+We show that part-of-speech tags contain significant amounts of information for unlabeled dependency parsing.
+We demonstrate an alternative to grammar induction by projecting reference parse trees from languages that have annotations to ones that are resource-poor.
+Tree banks in other languages can still serve as a kind of proxy for learning which features generally transfer useful in formation.
+We demonstrate that projecting from a single oracle chosen language can lead to good parsing performance.
+
+
+
+21 GT: Named Entity Recognition in Tweets: An Experimental Study
+People tweet more than 100 Million times daily, yielding a noisy, informal, but sometimes informative corpus of 140-character messages that mirrors the zeitgeist in an unprecedented manner.
+The performance of standard NLP tools is severely degraded on tweets.
+This paper addresses this issue by re-building the NLP pipeline beginning with part-of-speech tagging, through chunking, to named-entity recognition.
+Our novel T-NER system doubles F1 score compared with the Stanford NER system.
+T-NER leverages the redundancy inherent in tweets to achieve this performance, using LabeledLDA to exploit Freebase dictionaries as a source of distant supervision.
+LabeledLDA outperforms co-training, increasing F1 by 25% over ten common entity types.
+Our NLP tools are available at: http:// github.com/aritter/twitter_nlp
+We use token unigrams as features, including any hash tags, but ignoring twitter mentions, URLs and purely numeric tokens.
+Our system exploits a CRF model to segment named entities and then uses a distantly supervised approach based on LabeledLDA to classify named entities.
+
+
+
+22 GT: Identifying Relations for Open Information Extraction
+Open Information Extraction (IE) is the task of extracting assertions from massive corpora without requiring a pre-specified vocabulary.
+This paper shows that the output of state-of-the-art Open IE systems is rife with uninformative and incoherent extractions.
+To overcome these problems, we introduce two simple syntactic and lexical constraints on binary relations expressed by verbs.
+We implemented the constraints in the REVERB Open IE system, which more than doubles the area under the precision-recall curve relative to previous extractors such as TEXTRUNNER and WOEpos.
+More than 30% of REVERB’s extractions are at precision 0.8 or higher compared to virtually none for earlier systems.
+The paper concludes with a detailed analysis of REVERB’s errors, suggesting directions for future work.
+We show that verbal phrases uncover a large fraction of binary predicates while reducing the amount of noisy phrases that do not denote any relations.
+We develop a large scale web-based ReVerb corpus, comprising tuple extractions of predicate templates with their argument instantiations.
+Our ReVerb corpus is a large scale publicly available web based open extractions data set, containing about 15 million unique template extractions, automatically extracted from the ClueWeb09 web crawl.
+
+
+
+23 GT: An Efficient Implementation Of A New DOP Model
+Two apparently opposing DOP models exist in the literature: one which computes the parse tree involving the most frequent subtrees from a treebank and one which computes the parse tree involving the fewest subtrees from a treebank.
+This paper proposes an integration of the two models which outperforms each of them separately.
+Together with a PCFG-reduction of DOP we obtain improved accuracy and efficiency on the Wall Street Journal treebank.
+Our results show an 11% relative reduction in error rate over previous models, and an average processing time of 3.6 seconds per WSJ sentence.
+We note that it is the highest ranking parse, not derivation, that is desired.
+We show that DOP models that select the preferred parse of a test sentence using the shortest derivation criterion perform very well.
+We redress subtree probabilit by a simple correction factor.
+
+
+
+24 GT: Combining Distributional And Morphological Information For Part Of Speech Induction
+In this paper we discuss algorithms for clustering words into classes from unlabelled text using unsupervised algorithms, based on distributional and morphological information.
+We show how the use of morphological information can improve the performance on rare words, and that this is robust across a wide range of languages.
+We propose a perplexity based test for the quality of the POS induction algorithm.
+We find that many-to-1 accuracy has several defects.
+
+
+
+25 GT: Automatically Constructing A Lexicon Of Verb Phrase Idiomatic Combinations
+We investigate the lexical and syntactic flexibility of a class of idiomatic expressions.
+We develop measures that draw on such linguistic properties, and demonstrate that these statistical, corpus-based measures can be successfully used for distinguishing idiomatic combinations from non-idiomatic ones.
+We also propose a means for automatically determining which syntactic forms a particular idiom can appear in, and hence should be included in its lexical representation.
+To measure fixedness, we use statistical measures of lexical, syntactic, and overall fixedness.
+We come up with a dozen possible syntactic forms for verb-object pairs (based on passivization, determiner, and object pluralization) and use a corpus based statistical measure to determine the canonical form (s).
+
+
+
+26 GT: Named Entity Recognition Without Gazetteers
+It is often claimed that Named Entity recognition systems need extensive gazetteers - lists of names of people, organisations, locations, and other named entities.
+Indeed, the compilation of such gazetteers is sometimes mentioned as a bottleneck in the design of Named Entity recognition systems.
+We report on a Named Entity recognition system which combines rule-based grammars with statistical (maximum entropy) models.
+We report on the system's performance with gazetteers of different types and different sizes, using test material from the MUC-7 competition.
+We show that, for the text type and task of this competition, it is sufficient to use relatively small gazetteers of well-known names, rather than large gazetteers of low-frequency names.
+We conclude with observations about the domain independence of the competition and of our experiments.
+We utilize the discourse level to disambiguate items in non predictive contexts.
+We exploit label consistency information within a document using relatively ad hoc multi-stage labeling procedures.
+
+
+
+27 GT: Extracting Product Features And Opinions From Reviews
+Consumers are often forced to wade through many on-line reviews in order to make an informed product choice.
+This paper introduces OPINE, an unsupervised information-extraction system which mines reviews in order to build a model of important product features, their evaluation by reviewers, and their relative quality across products.
+Compared to previous work, OPINE achieves 22% higher precision (with only 3% lower recall) on the feature extraction task.
+OPINE's novel use of relaxation labeling for finding the semantic orientation of words in context leads to strong performance on the tasks of finding opinion phrases and their polarity.
+Our dictionary-based method utilizes Wikipedia to find an entry page for a phrase or a single term in a query.
+We not only analyze polarity of opinions regarding product features but also rank opinions based on their strength.
+We present a method that identifies product features for using corpus statistics, WordNet relations and morphological cues.
+The relevance ranking and extraction was performed with Pointwise Mutual Information.
+
+
+
+28 GT: Non-Projective Dependency Parsing Using Spanning Tree Algorithms
+We formalize weighted dependency parsing as searching for maximum spanning trees (MSTs) in directed graphs.
+Using this representation, the parsing algorithm of Eisner (1996) is sufficient for searching over all projective trees in O(n3) time.
+More surprisingly, the representation is extended naturally to non-projective parsing using Chu-Liu-Edmonds (Chu and Liu, 1965; Edmonds, 1967) MST algorithm, yielding an O(n2) parsing algorithm.
+We evaluate these methods on the Prague Dependency Treebank using online large-margin learning techniques (Crammer et al., 2003; McDonald et al., 2005) and show that MST parsing increases efficiency and accuracy for languages with non-projective dependencies.
+The key idea is to build a complete graph consisting of tokens of the sentence where each edge is weighted by a learned scoring function.
+
+
+
+29 GT: Emotions From Text: Machine Learning For Text-Based Emotion Prediction
+In addition to information, text contains attitudinal, and more specifically, emotional content.
+This paper explores the text-based emotion prediction problem empirically, using supervised machine learning with the SNoW learning architecture.
+The goal is to classify the emotional affinity of sentences in the narrative domain of children's fairy tales, for subsequent usage in appropriate expressive rendering of text-to-speech synthesis.
+Initial experiments on a preliminary data set of 22 fairy tales show encouraging results over a narrative baseline and BOW approach for classification of emotional versus non-emotional contents, with some dependency on parameter tuning.
+We also discuss results for a tripartite model which covers emotional valence, as well as feature set alternations.
+In addition, we present plans for a more cognitively sound sequential model, taking into consideration a larger set of basic emotions.
+
+
+
+30 GT: A Maximum Entropy Model For Prepositional Phrase Attachment
+We construct a benchmark dataset of 27,937 pp-attachment quadruples extracted from the Wall Street Journal corpus.
+We train a maximum entropy model on (v, n1, p, n2) quadruples extracted from the Wall Street Journal corpus and achieve 81.6% accuracy.
+Our maximum entropy approach uses the mutual information clustering algorithm.
+
+
+
+31 GT: Learning Dependency Translation Models As Collections Of Finite-State Head Transducers
+The paper defines weighted head transducers, finite-state machines that perform middle-outstring transduction.
+These transducers are strictly more expressive than the special case of standard left-to-right finite-state transducers.
+Dependency transduction models are then defined as collections of weighted head transducers that are applied hierarchically.
+A dynamic programming search algorithm is described for finding the optimal transduction of an input string with respect to a dependency transduction model.
+A method for automatically training a dependency transduction model from a set of input-output example strings is presented.
+The method first searches for hierarchical alignments of the training examples guided by correlation statistics, and then constructs the transitions of head transducers that are consistent with these alignments.
+Experimental results are given for applying the training method to translation from English to Spanish and Japanese.
+We treat translation as a process of simultaneous induction of source and target dependency trees using head transduction.
+We present a two-level arranged word ordering and chunk ordering by a hierarchically organized collection of finite state transducers.
+We induce parallel tree structures from unbracketed parallel text, modeling the generation of each node's children with a finite-state transducer.
+
+
+
+32 GT: An Empirically Based System For Processing Definite Descriptions
+We present an implemented system for processing definite descriptions in arbitrary domains.
+The design of the system is based on the results of a corpus analysis previously reported, which highlighted the prevalence of discourse-new descriptions in newspaper corpora.
+The annotated corpus was used to extensively evaluate the proposed techniques for matching definite descriptions with their antecedents, discourse segmentation, recognizing discourse-new descriptions, and suggesting anchors for bridging descriptions.
+A major obstacle in the resolution of definite noun phrases with full lexical heads is that only a small proportion of them is actually anaphoric (ca. 30%).
+In our system, WordNet is consulted to obtain the synonymy, hypernymy and meronymy relations for resolving the definite anaphora.
+We classify each definite description as either direct anaphora, discourse-new, or bridging description.
+We distinguish restrictive from non-restrictive post modification by ommitting modifiers that occur between commas, which should not be classified as chain starting.
+For the discourse-new classification task, the model's most important feature is whether the head word of the NP to be classified has occurred previously.
+
+
+
+33 GT: On Coreferring: Coreference In MUC And Related Annotation Schemes
+In this paper, it is argued that "coreference" annotations, as performed in the MUC community for example, go well beyond annotation of the relation of coreference proper.
+As a result, it is not always clear what semantic relation these annotations are encoding.
+The paper discusses a number of problems with these annotations and concludes that rethinking of the coreference task is needed before the task is expanded.
+In particular, it suggests a division of labor whereby annotation of the coreference relation proper is separated from other tasks such as annotation of bound anaphora and of the relation between a subject and a predicative NP.
+It suffers however from a number of problems (van Deemter and Kibble, 2000), chief among which is the fact that the one semantic relation expressed by the scheme, ident, conflates a number of relations that semanticists view as distinct: besides COREFERENCE proper, there are IDENTITY ANAPHORA, BOUND ANAPHORA, and even PREDICATION.
+
+
+
+34 GT: Probabilistic Top-Down Parsing And Language Modeling
+This paper describes the functioning of a broad-coverage probabilistic top-down parser, and its application to the problem of language modeling for speech recognition.
+The paper first introduces key notions in language modeling and probabilistic parsing, and briefly reviews some previous approaches to using syntactic structure for language modeling.
+A lexicalized probabilistic top-down parser is then presented, which performs very well, in terms of both the accuracy of returned parses and the efficiency with which they are found, relative to the best broad-coverage statistical parsers.
+A new language model that utilizes probabilistic top-down parsing is then outlined, and empirical results show that it improves upon previous work in test corpus perplexity.
+Interpolation with a trigram model yields an exceptional improvement relative to the improvement observed by other models, demonstrating the degree to which the information captured by our parsing model is orthogonal to that captured by a trigram model.
+A small recognition experiment also demonstrates the utility of the model.
+Our parser works left-to-right through the sentence, and abjures dynamic programming in favor of a beam search, keeping some large number of possibilities to extend by adding the next word, and then re-pruning.
+At each word in the string, our top-down parser provides access to the weighted set of partial analyses in the beam.
+
+
+
+35 GT: Using The Web To Obtain Frequencies For Unseen Bigrams
+This article shows that the Web can be employed to obtain frequencies for bigrams that are unseen in a given corpus.
+We describe a method for retrieving counts for adjective-noun, noun-noun, and verb-object bigrams from the Web by querying a search engine.
+We evaluate this method by demonstrating: (a) a high correlation between Web frequencies and corpus frequencies; (b) a reliable correlation between Web frequencies and plausibility judgments; (c) a reliable correlation between Web frequencies and frequencies recreated using class-based smoothing; (d) a good performance of Web frequencies in a pseudodisambiguation task.
+Our study reveals that the large amount of data available for the web counts could outweigh the noisy problems.
+
+
+
+36 GT: The Importance of Syntactic Parsing and Inference in Semantic Role Labeling
+We present a general framework for semantic role labeling.
+The framework combines a machine learning technique with an integer linear programming–based inference procedure, which incorporates linguistic and structural constraints into a global decision process.
+Within this framework, we study the role of syntactic parsing information in semantic role labeling.
+We show that full syntactic parsing information is, by far, most relevant in identifying the argument, especially, in the very first stage—the pruning stage.
+Surprisingly, the quality of the pruning stage cannot be solely determined based on its recall and precision.
+Instead, it depends on the characteristics of the output candidates that determine the difficulty of the downstream problems.
+Motivated by this observation, we propose an effective and simple approach of combining different semantic role labeling systems through joint inference, which significantly improves its performance.
+Our system has been evaluated in the CoNLL-2005 shared task on semantic role labeling, and achieves the highest F1 score among 19 participants.
+The verb SRL system consists of four stages: candidate generation, argument identification, argument classification and inference.
+
+
+
+37 GT: Word Association Norms Mutual Information And Lexicography
+The term word association is used in a very particular sense in the psycholinguistic literature.
+(Generally speaking, subjects respond quicker than normal to the word nurse if it follows a highly associated word such as doctor.)
+We will extend the term to provide the basis for a statistical description of a variety of interesting linguistic phenomena, ranging from semantic relations of the doctor/nurse type (content word/content word) to lexico-syntactic co-occurrence constraints between verbs and prepositions (content word/function word).
+This paper will propose an objective measure based on the information theoretic notion of mutual information, for estimating word association norms from computer readable corpora.
+(The standard method of obtaining word association norms, testing a few thousand :mbjects on a few hundred words, is both costly and unreliable.)
+The proposed measure, the association ratio, estimates word association norms directly from computer readable corpora, making it possible to estimate norms for tens of thousands of words.
+In our work, the significance of an association (x, y) is measured by the mutual information I (x, y) ,i.e. the probability of observing x and y together, compared with the probability of observing x and y independently.
+
+
+
+38 GT: Lexical Cohesion Computed By Thesaural Relations As An Indicator Of The Structure Of Text
+In text, lexical cohesion is the result of chains of related words that contribute to the continuity of lexical meaning.
+These lexical chains are a direct result of units of text being 'about the same thing,' and finding text structure involves finding units of text that are about the same thing.
+Hence, computing the chains is useful, since they will have a correspondence to the structure of the text.
+Determining the structure of text is an essential step in determining the deep meaning of the text.
+In this paper, a thesaurus is used as the major knowledge base for computing lexical chains.
+Correspondences between lexical chains and structural elements are shown to exist.
+Since the lexical chains are computable, and exist in non-domain-specific text, they provide a valuable indicator of text structure.
+The lexical chains also provide a semantic context for interpreting words, concepts, and sentences.
+We propose the idea of using lexical chains as indicators of lexical cohesion.
+We propose the concept of Lexical Chains to explore the discourse structure of a text.
+
+
+
+39 GT: Class-Based N-Gram Models Of Natural Language
+We address the problem of predicting a word from previous words in a sample of text.
+In particular, we discuss n-gram models based on classes of words. We also discuss several statistical algorithms for assigning words to classes based on the frequency of their co-occurrence with other words.
+We find that we are able to extract classes that have the flavor of either syntactically based groupings or semantically based groupings, depending on the nature of the underlying statistics.
+We propose a window method introducing the concept of semantic stickiness of two words as the relatively frequent close occurrence between them (less than 500 words distance).
+
+
+
+40 GT: Introduction To The Special Issue On Computational Linguistics Using Large Corpora
+A historical account of this empirical renaissance is provide in this work.
+Much recent research in the field of natural language processing (NLP) has focused on an empirical, corpus-based approach.
+
+
+
+41 GT: Tagging English Text With A Probabilistic Model
+In this paper we present some experiments on the use of a probabilistic model to tag English text, i.e. to assign to each word the correct tag (part of speech) in the context of the sentence.
+The main novelty of these experiments is the use of untagged text in the training of the model.
+We have used a simple triclass Marlcov model and are looking for the best way to estimate the parameters of this model, depending on the kind and amount of training data provided.
+Two approaches in particular are compared and combined:
+using text that has been tagged by hand and computing relative frequency counts,
+using text without tags and training the model as a hidden Markov process, according to a Maximum Likelihood principle.
+Experiments show that the best training is obtained by using as much tagged text as possible.
+They also show that Maximum Likelihood training, the procedure that is routinely used to estimate hidden Markov models parameters from training data, will not necessarily improve the tagging accuracy.
+In fact, it will generally degrade this accuracy, except when only a limited amount of hand-tagged text is available.
+we attempted to improve HMM POS tagging by expectation maximization with unlabeled data.
+we introduced the still standard procedure of using a bigram Hidden Markov Model (HMM) trained via Expectation Maximization.
+In the context of POS tagging, we introduce a method that he calls maximum likelihood tagging.
+
+
+
+42 GT: A Syntactic Analysis Method Of Long Japanese Sentences Based On The Detection Of Conjunctive Structures
+This paper presents a syntactic analysis method that first detects conjunctive structures in a sentence by checking parallelism of two series of words and then analyzes the dependency structure of the sentence with the help of the information about the conjunctive structures.
+Analysis of long sentences is one of the most difficult problems in natural language processing.
+The main reason for this difficulty is the structural ambiguity that is common for conjunctive structures that appear in long sentences.
+Human beings can recognize conjunctive structures because of a certain, but sometimes subtle, similarity that exists between conjuncts.
+Therefore, we have developed an algorithm for calculating a similarity measure between two arbitrary series of words from the left and the right of a conjunction and selecting the two most similar series of words that can reasonably be considered as composing a conjunctive structure.
+This is realized using a dynamic programming technique.
+A long sentence can be reduced into a shorter form by recognizing conjunctive structures.
+Consequently, the total dependency structure of a sentence can be obtained by relatively simple head-dependent rules.
+A serious problem concerning conjunctive structures, besides the ambiguity of their scopes, is the ellipsis of some of their components.
+Through our dependency analysis process, we can find the ellipses and recover the omitted components.
+We report the results of analyzing 150 Japanese sentences to illustrate the effectiveness of this method.
+we propose a method to detect conjunctive structures by calculating similarity scores between two sequences of bunsetsus.
+we propose a similarity-based method to resolve both of the two tasks for Japanese.
+we propose a Japanese parsing method that included coordinate structure detection.
+
+
+
+43 GT: Word Sense Disambiguation Using A Second Language Monolingual Corpus
+This paper presents a new approach for resolving lexical ambiguities in one language using statistical data from a monolingual corpus of another language.
+This approach exploits the differences between mappings of words to senses in different languages.
+The paper concentrates on the problem of target word selection in machine translation, for which the approach is directly applicable.
+The presented algorithm identifies syntactic relations between words, using a source language parser, and maps the alternative interpretations of these relations to the target language, using a bilingual lexicon.
+The preferred senses are then selected according to statistics on lexical relations in the target language.
+The selection is based on a statistical model and on a constraint propagation algorithm, which simultaneously handles all ambiguities in the sentence.
+The method was evaluated using three sets of Hebrew and German examples and was found to be very useful for disambiguation.
+The paper includes a detailed comparative analysis of statistical sense disambiguation methods.
+we propose an approach to WSD using monolingual corpora,a bilingual lexicon and a parser for the source language.
+
+
+
+44 GT: An Efficient Probabilistic Context-Free Parsing Algorithm That Computes Prefix Probabilities
+We describe an extension of Earley's parser for stochastic context-free grammars that computes the following quantities given a stochastic context-free grammar and an input string: a) probabilities of successive prefixes being generated by the grammar; b) probabilities of substrings being generated by the nonterminals, including the entire string being generated by the grammar; c) most likely (Viterbi) parse of the string; d) posterior expected number of applications of each grammar production, as required for reestimating rule probabilities.
+Probabilities (a) and (b) are computed incrementally in a single left-to-right pass over the input.
+Our algorithm compares favorably to standard bottom-up parsing methods for SCFGs in that it works efficiently on sparse grammars by making use of Earley's top-down control structure.
+It can process any context-free rule format without conversion to some normal form, and combines computations for (a) through (d) in a single algorithm.
+Finally, the algorithm has simple extensions for processing partially bracketed inputs, and for finding partial parses and their likelihoods on ungrammatical inputs.
+An Earley chart is used for keeping track of all derivations that are consistent with the input.
+
+
+
+45 GT: Introduction To The Special Issue On Word Sense Disambiguation: The State Of The Art
+We present a very concise survey of the history of ideas used in word sense disambiguation.
+In general, the various WSD approaches of the past can be divided into two types, i.e., data and knowledge-based approaches.
+We argue that word sense ambiguity is a central problem for many established HLT applications (for example Machine Translation, Information Extraction and Information Retrieval).
+
+
+
+46 GT: Knowledge-Free Induction Of Inflectional Morphologies
+We propose an algorithm to automatically induce the morphology of inflectional languages using only text corpora and no human input.
+Our algorithm combines cues from orthography, semantics, and syntactic distributions to induce morphological relationships in German, Dutch, and English.
+Using CELEX as a gold standard for evaluation, we show our algorithm to be an improvement over any knowledge-free algorithm yet proposed.
+We use latent semantic analysis to find prefixes, suffixes and circumfixes in German, Dutch and English.
+
+
+
+47 GT: Training Tree Transducers
+Many probabilistic models for natural language are now written in terms of hierarchical tree structure.
+Tree-based modeling still lacks many of the standard tools taken for granted in (finite-state) string-based modeling.
+The theory of tree transducer automata provides a possible framework to draw on, as it has been worked out in an extensive literature.
+We motivate the use of tree transducers for natural language and address the training problem for probabilistic tree-to-tree and tree-to-string transducers.
+We define training and decoding algorithms for both generalized tree-to-tree and tree-to-string transducers.
+We describe training and decoding algorithms for both generalized tree-to-tree and tree-to-string transducers.
+
+
+
+48 GT: A Unigram Orientation Model For Statistical Machine Translation
+In this paper, we present a unigram segmentation model for statistical machine translation where the segmentation units are blocks: pairs of phrases without internal structure.
+The segmentation model uses a novel orientation component to handle swapping of neighbor blocks.
+During training, we collect block unigram counts with orientation: we count how often a block occurs to the left or to the right of some predecessor block.
+The orientation model is shown to improve translation performance over two models: 1) no block re-ordering is used, and 2) the block swapping is controlled only by a language model.
+We show experimental results on a standard Arabic-English translation task.
+This work introduces lexical features for distortion modeling.
+
+
+
+49 GT: Automatic Tagging Of Arabic Text: From Raw Text To Base Phrase Chunks
+To date, there are no fully automated systems addressing the community's need for fundamental language processing tools for Arabic text.
+In this paper, we present a Support Vector Machine (SVM) based approach to automatically tokenize (segmenting off clitics), part-of- speech (POS) tag and annotate base phrases (BPs) in Arabic text.
+We adapt highly accurate tools that have been developed for English text and apply them to Arabic text.
+Khoja (2001) first introduced a tagger for Arabic, which has 131 tags, but this work has collapsed the tag set to simplify tagging.
+We describe a part-of-speech tagger based on support vector machines that is trained on tokenized data (clitics are separate tokens), reporting a tagging accuracy of 95.5%.
+
+
+
+50 GT: Alignment By Agreement
+We present an unsupervised approach to symmetric word alignment in which two simple asymmetric models are trained jointly to maximize a combination of data likelihood and agreement between the models.
+Compared to the standard practice of intersecting predictions of independently-trained models, joint training provides a 32% reduction in AER.
+Moreover, a simple and efficient pair of HMM aligners provides a 29% reduction in AER over symmetrized IBM model 4 predictions.
+We use discriminative SMT on large training data, training 1.5 million features on 67,000 sentences.
+
+
+
+51 GT: Parser Combination By Reparsing
+We present a novel parser combination scheme that works by reparsing input sentences once they have already been parsed by several different parsers.
+We apply this idea to dependency and constituent parsing, generating results that surpass state-of-the-art accuracy levels for individual parsers.
+We introduce a threshold for the constituent count and search for the tree with the largest count number from all the possible constituent combinations.
+We combine five parsers to obtain a score of 92.1, whereas the best single parser obtains a score of 91.0.
+
+
+
+52 GT: Multiple Aspect Ranking Using the Good Grief Algorithm
+We address the problem of analyzing multiple related opinions in a text.
+For instance, in a restaurant review such opinions may include food, ambience and service.
+We formulate this task as a multiple aspect ranking problem, where the goal is to produce a set of numerical scores, one for each aspect.
+We present an algorithm that jointly learns ranking models for individual aspects by modeling the dependencies between assigned ranks.
+This algorithm guides the prediction of individual rankers by analyzing meta-relations between opinions, such as agreement and contrast.
+We prove that our agreement-based joint model is more expressive than individual ranking models.
+Our empirical results further confirm the strength of the model: the algorithm provides significant improvement over both individual rankers and a state-of-the-art joint ranking model.
+We combine an agreement model based on contrastive RST relations with a local aspect (or target) model to make a more informed overall decision for sentiment classification.
+
+
+
+53 GT: Applying Many-to-Many Alignments and Hidden Markov Models to Letter-to-Phoneme Conversion
+Letter-to-phoneme conversion generally requires aligned training data of letters and phonemes.
+Typically, the alignments are limited to one-to-one alignments.
+We present a novel technique of training with many-to-many alignments.
+A letter chunking bigram prediction manages double letters and double phonemes automatically as opposed to preprocessing with fixed lists.
+We also apply an HMM method in conjunction with a local classification model to predict a global phoneme sequence given a word.
+The many-to-many alignments result in significant improvements over the traditional one-to-one approach.
+Our system achieves state-of-the-art performance on several languages and data sets.
+The M2M-aligner is based on the expectation maximization (EM) algorithm.
+M2M-aligner is a many-to-many (M-M) alignment algorithm based on EM that allows for mapping of multiple letters to multiple phonemes.
+
+
+
+54 GT: ISP: Learning Inferential Selectional Preferences
+Semantic inference is a key component for advanced natural language understanding.
+However, existing collections of automatically acquired inference rules have shown disappointing results when used in applications such as textual entailment and question answering.
+This paper presents ISP, a collection of methods for automatically learning admissible argument values to which an inference rule can be applied, which we call inferential selectional preferences, and methods for filtering out incorrect inferences.
+We evaluate ISP and present empirical evidence of its effectiveness.
+Context-sensitive extensions of DIRT focus on making DIRT rules context-sensitive by attaching appropriate semantic classes to the X and Y slots of an inference rule.
+We build a set of semantic classes using WordNet in one case and CBC clustering algorithm in the other; for each rule, we use the overlap of the fillers found in the input corpus as an indicator of the correct semantic classes.
+We augment each relation with its selectional preferences, i.e. fine-grained entity types of two arguments, to handle polysemy.
+
+
+
+55 GT: Using a Dependency Parser to Improve SMT for Subject-Object-Verb Languages
+We introduce a novel precedence reordering approach based on a dependency parser to statistical machine translation systems.
+Similar to other preprocessing reordering approaches, our method can efficiently incorporate linguistic knowledge into SMT systems without increasing the complexity of decoding.
+For a set of five subject-object-verb (SOV) order languages, we show significant improvements in BLEU scores when translating from English, compared to other reordering approaches, in state-of-the-art phrase-based SMT systems.
+We show that translation between subject-verb-object (English) and subject-object-verb (Pashto) languages can be improved by reordering the source side of the parallel data.
+On Web text, we report significant improvements applying one set of hand-crafted rules to translation from English to each of five SOV languages: Korean, Japanese, Hindi, Urdu and Turkish.
+
+
+
+56 GT: Linguistic Regularities in Continuous Space Word Representations
+Continuous space language models have recently demonstrated outstanding results across a variety of tasks.
+In this paper, we examine the vector-space word representations that are implicitly learned by the input-layer weights.
+We find that these representations are surprisingly good at capturing syntactic and semantic regularities in language, and that each relationship is characterized by a relation-specific vector offset.
+This allows vector-oriented reasoning based on the offsets between words.
+For example, the male/female relationship is automatically learned, and with the induced vector representations, "King - Man + Woman" results in a vector very close to "Queen".
+We demonstrate that the word vectors capture syntactic regularities by means of syntactic analogy questions (provided with this paper), and are able to correctly answer almost 40% of the questions.
+We demonstrate that the word vectors capture semantic regularities by using the vector offset method to answer SemEval-2012 Task 2 questions.
+Remarkably, this method outperforms the best previous systems.
+We reach top accuracy on the syntactic subset (an syn) with a CBOW predict model.
+
+
+
+57 GT: Scaling To Very Very Large Corpora For Natural Language Disambiguation
+The amount of readily available on-line text has reached hundreds of billions of words and continues to grow.
+Yet for most core natural language tasks, algorithms continue to be optimized, tested and compared after training on corpora consisting of only one million words or less.
+In this paper, we evaluate the performance of different learning methods on a prototypical natural language disambiguation task, confusion set disambiguation, when trained on orders of magnitude more labeled data than has previously been used.
+We are fortunate that for this particular application, correctly labeled training data is free.
+Since this will often not be the case, we examine methods for effectively exploiting very large corpora when labeled data comes at a cost.
+We suggest that the development of very large training corpora may be more effective for progress in empirical Natural Language Processing than improving methods that use existing smaller training corpora.
+We show that even using a very simple algorithm, the results continue to improve log-linearly with more training data, even out to a billion words.
+
+
+
+58 GT: An Unsupervised Method For Word Sense Tagging Using Parallel Corpora
+We present an unsupervised method for word sense disambiguation that exploits translation correspondences in parallel corpora.
+The technique takes advantage of the fact that cross-language lexicalizations of the same concept tend to be consistent, preserving some core element of its semantics, and yet also variable, reflecting differing translator preferences and the influence of context.
+Working with parallel corpora introduces an extra complication for evaluation, since it is difficult to find a corpus that is both sense tagged and parallel with another language; therefore we use pseudo-translations, created by machine translation systems, in order to make possible the evaluation of the approach against a standard test set.
+The results demonstrate that word-level translation correspondences are a valuable source of information for sense disambiguation.
+We present an unsupervised approach to WSD that exploits translational correspondences in parallel corpora that are artificially created by applying commercial MT systems on a sense-tagged English corpus.
+Cross-language tagging is the goal and we present a method for word sense tagging both the source and target texts of parallel bilingual corpora with the WordNet sense inventory.
+
+
+
+59 GT: Loosely Tree-Based Alignment For Machine Translation
+We augment a model of translation based on re-ordering nodes in syntactic trees in order to allow alignments not conforming to the original tree structure, while keeping computational complexity polynomial in the sentence length.
+This is done by adding a new subtree cloning operation to either tree-to-string or tree-to-tree alignment algorithms.
+We found that parallel trees over-constrained the alignment problem, and achieved better results with a tree-to-string model than with a tree-to-tree model using two trees.
+We train a system on parallel constituent trees from the Korean-English Treebank, evaluating agreement with hand-annotated word alignments.
+The "clone" operation allows words to be aligned even in cases of radically mismatched trees, at a cost in the probability of the alignment.
+
+
+
+60 GT: Accurate Unlexicalized Parsing
+We demonstrate that an unlexicalized PCFG can parse much more accurately than previously shown, by making use of simple, linguistically motivated state splits, which break down false independence assumptions latent in a vanilla treebank grammar.
+Indeed, its performance of 86.36% (LP/LR F1) is better than that of early lexicalized PCFG models, and surprisingly close to the current state-of-the-art.
+This result has potential uses beyond establishing a strong lower bound on the maximum possible accuracy of unlexicalized models: an unlexicalized PCFG is much more compact, easier to replicate, and easier to interpret than more complex lexical models, and the parsing algorithms are simpler, more widely understood, of lower asymptotic complexity, and easier to optimize.
+We also present a manual symbol refinement method.
+
+
+
+61 GT: A Mention-Synchronous Coreference Resolution Algorithm Based On The Bell Tree
+This paper proposes a new approach for coreference resolution which uses the Bell tree to represent the search space and casts the coreference resolution problem as finding the best path from the root of the Bell tree to the leaf nodes.
+A Maximum Entropy model is used to rank these paths.
+The coreference performance on the 2002 and 2003 Automatic Content Extraction (ACE) data will be reported.
+We also train a coreference system using the MUC6 data and competitive results are obtained.
+We apply beam search at test time, but use a static assignment of antecedents and learns log-linear model using batch learning.
+We use a Bell tree whose leaves represent possible partitionings of the mentions into entities and then trained a model for searching the tree.
+To cope with computational complexity, we heuristically search for the most probable partition by performing a beam search through a Bell tree.
+We show that one can obtain a very high MUC score simply by lumping all mentions together.
+We applied the ANY predicate to generate cluster-level features for their entity-mention model, which did not perform as well as the mention-pair model.
+
+
+
+62 GT: Automatic Evaluation Of Machine Translation Quality Using Longest Common Subsequence And Skip-Bigram Statistics
+In this paper we describe two new objective automatic evaluation methods for machine translation.
+The first method is based on longest common subsequence between a candidate translation and a set of reference translations.
+Longest common subsequence takes into account sentence level structure similarity naturally and identifies longest co-occurring in-sequence n-grams automatically.
+The second method relaxes strict n-gram matching to skip-bigram matching.
+Skip-bigram is any pair of words in their sentence order.
+Skip-bigram co-occurrence statistics measure the overlap of skip-bigrams between a candidate translation and a set of reference translations.
+The empirical results show that both methods correlate with human judgments very well in both adequacy and fluency.
+We experimented with a wide set of metrics, including NIST, WER (Niefen et al, 2000), PER (Tillmann et al, 1997), and variants of ROUGE, BLEU and GTM.
+
+
+
+63 GT: Statistical Machine Translation By Parsing
+In an ordinary syntactic parser, the input is a string, and the grammar ranges over strings.
+This paper explores generalizations of ordinary parsing algorithms that allow the input to consist of string tuples and/or the grammar to range over string tuples.
+Such algorithms can infer the synchronous structures hidden in parallel texts.
+It turns out that these generalized parsers can do most of the work required to train and apply a syntax-aware statistical machine translation system.
+When a parser's grammar can have fewer dimensions than the parser's input, we call it a synchronizer.
+We formalize machine translation problem as synchronous parsing based on multi text grammars.
+
+
+
+64 GT: Extracting Semantic Orientations Of Words Using Spin Model
+We propose a method for extracting semantic orientations of words: desirable or undesirable.
+Regarding semantic orientations as spins of electrons, we use the mean field approximation to compute the approximate probability function of the system instead of the intractable actual probability function.
+We also propose a criterion for parameter selection on the basis of magnetization.
+Given only a small number of seed words, the proposed method extracts semantic orientations with high accuracy in the experiments on English lexicon.
+The result is comparable to the best value ever reported.
+We build lexical network from not only co-occurrence but other resources including thesaurus.
+We determine term orientation (for Japanese) according to a spin model, i.e. a physical model of a set of electrons each endowed with one between two possible spin directions, and where electrons propagate their spin direction to neighbouring electrons until the system reaches a stable configuration.
+
+
+
+65 GT: Semantic Role Labeling Using Different Syntactic Views
+Semantic role labeling is the process of annotating the predicate-argument structure in text with semantic labels.
+In this paper we present a state-of-the-art baseline semantic role labeling system based on Support Vector Machine classifiers.
+We show improvements on this system by: i) adding new features including features extracted from dependency parses, ii) performing feature selection and calibration and iii) combining parses obtained from semantic parsers trained using different syntactic views.
+Error analysis of the baseline system showed that approximately half of the argument identification errors resulted from parse errors in which there was no syntactic constituent that aligned with the correct argument.
+In order to address this problem, we combined semantic parses from a Minipar syntactic parse and from a chunked syntactic representation with our original baseline system which was based on Charniak parses.
+All of the reported techniques resulted in performance improvements.
+We combine systems that are based on phrase-structure parsing, dependency parsing, and shallow parsing.
+We use the Constituent, Predicate, and Predicate-Constituent related features for the kernel, resulting in the best performance.
+We combine the outputs of multiple parsers to extract reliable syntactic information, which is translated into features for a machine learning experiment in assigning semantic roles.
+
+
+
+66 GT: Meaningful Clustering Of Senses Helps Boost Word Sense Disambiguation Performance
+Fine-grained sense distinctions are one of the major obstacles to successful Word Sense Disambiguation.
+In this paper, we present a method for reducing the granularity of the WordNet sense inventory based on the mapping to a manually crafted dictionary encoding sense hierarchies, namely the Oxford Dictionary of English.
+We assess the quality of the mapping and the induced clustering, and evaluate the performance of coarse WSD systems in the Senseval-3 English all-words task.
+In our coarse-grained task, the sense inventory was first clustered semi-automatically with each cluster representing an equivalence class over senses.
+We present an automatic approach for mapping between sense inventories; here similarities in gloss definition and structured relations between the two sense inventories are exploited in order to map between WordNet senses and distinctions made within the coarser-grained Oxford English Dictionary.
+We argue that automatically creating new alignments is difficult because of word ambiguities, different granularities of senses, or language specific conceptualizations.
+
+
+
+67 GT: Efficient Unsupervised Discovery Of Word Categories Using Symmetric Patterns And High Frequency Words
+We present a novel approach for discovering word categories, sets of words sharing a significant aspect of their meaning.
+We utilize meta-patterns of high-frequency words and content words in order to discover pattern candidates.
+Symmetric patterns are then identified using graph-based measures, and word categories are created based on graph clique sets.
+Our method is the first pattern-based method that requires no corpus annotation or manually provided seed patterns or words.
+We evaluate our algorithm on very large corpora in two languages, using both human judgments and WordNet-based evaluation.
+Our fully unsupervised results are superior to previous work that used a POS tagged corpus, and computation time for huge corpora are orders of magnitude faster than previously reported.
+We show that pairs of words that often appear together in symmetric patterns tend to belong to the same class (that is, they share some notable aspect of their semantics).
+
+
+
+68 GT: Tree-To-String Alignment Template For Statistical Machine Translation
+We present a novel translation model based on tree-to-string alignment template (TAT) which describes the alignment between a source parse tree and a target string.
+A TAT is capable of generating both terminals and non-terminals and performing reordering at both low and high levels.
+The model is linguistically syntax-based because TATs are extracted automatically from word-aligned, source side parsed parallel texts.
+To translate a source sentence, we first employ a parser to produce a source parse tree and then apply TATs to transform the tree into a target string.
+Our experiments show that the TAT-based model significantly outperforms Pharaoh, a state-of-the-art decoder for phrase-based models.
+We perform derivation-level combination for mixing different types of translation rules within one derivation.
+We also add non-syntactic PBSMT - phrase-based statistical machine translation - phrases into our tree-to-string translation system.
+
+
+
+69 GT: Contextual Dependencies In Unsupervised Word Segmentation
+Developing better methods for segmenting continuous text into words is important for improving the processing of Asian languages, and may shed light on how humans learn to segment speech.
+We propose two new Bayesian word segmentation methods that assume unigram and bigram models of word dependencies respectively.
+The bigram model greatly outperforms the unigram model (and previous probabilistic models), demonstrating the importance of such dependencies for word segmentation.
+We also show that previous probabilistic models rely crucially on sub-optimal search procedures.
+We start at a random derivation of the corpus, and at every iteration resample a derivation by amending the current one through local changes made at the node level.
+We use hierarchical Dirichlet processes (HDP) to induce contextual word models.
+
+
+
+70 GT: Minimum Risk Annealing For Training Log-Linear Models
+When training the parameters for a natural language system, one would prefer to minimize 1-best loss (error) on an evaluation set.
+Since the error surface for many natural language problems is piecewise constant and riddled with local minima, many systems instead optimize log-likelihood, which is conveniently differentiable and convex.
+We propose training instead to minimize the expected loss, or risk.
+We define this expectation using a probability distribution over hypotheses that we gradually sharpen (anneal) to focus on the 1-best hypothesis.
+Besides the linear loss functions used in previous work, we also describe techniques for optimizing nonlinear functions such as precision or the BLEU metric.
+We present experiments training log-linear combinations of models for dependency parsing and for machine translation.
+In machine translation, annealed minimum risk training achieves significant improvements in BLEU over standard minimum error training.
+We also show improvements in labeled dependency parsing.
+We use a linearization technique to approximate the expectation of log BLEU score.
+We present a deterministic annealing training procedure, whose objective is to minimize the expected error (together with the entropy regularization technique).
+We observe test set gains by minimum risk annealing, which incorporates a temperature parameter that trades off between the smoothness of the objective and the degree it reflects the underlying piecewise constant error surface.
+
+
+
+71 GT: EM Can Find Pretty Good HMM POS-Taggers (When Given a Good Start)
+We address the task of unsupervised POS tagging.
+We demonstrate that good results can be obtained using the robust EM-HMM learner when provided with good initial conditions, even with incomplete dictionaries.
+We present a family of algorithms to compute effective initial estimations p(t|w).
+We test the method on the task of full morphological disambiguation in Hebrew achieving an error reduction of 25% over a strong uniform distribution baseline.
+We also test the same method on the standard WSJ unsupervised POS tagging task and obtain results competitive with recent state-of-the-art methods, while using simple and efficient learning methods.
+We use linguistic considerations for choosing a good starting point for the EM algorithm.
+We note that fixing noisy dictionaries by hand is actually quite feasible, and suggest that effort should focus on exploiting human knowledge rather than just algorithmic improvements.
+
+
+
+72 GT: Co-Training for Cross-Lingual Sentiment Classification
+The lack of Chinese sentiment corpora limits the research progress on Chinese sentiment classification.
+However, there are many freely available English sentiment corpora on the Web.
+This paper focuses on the problem of cross-lingual sentiment classification, which  leverages an available English corpus for Chinese sentiment classification by using the English corpus as training data.
+Machine translation services are used for eliminating the language gap between the training set and test set, and English features and Chinese features are  considered as two independent views of the classification problem.
+We propose a co-training approach to making use of unlabeled  Chinese data.
+Experimental results show the effectiveness of the proposed approach, which can outperform the standard inductive classifiers and the transductive classifiers.
+The proposed co-regression algorithm can make full use of both the features in the source language and the features in the target language in a unified framework.
+We propose to use ensemble method to train better Chinese sentiment classification model on English labeled data and their Chinese translation.
+We leveraged an available English corpus for Chinese sentiment classification by using the co-training approach to make full use of both English and Chinese features in a unified framework.
+
+
+
+73 GT: A Gibbs Sampler for Phrasal Synchronous Grammar Induction
+We present a phrasal synchronous grammar model of translational equivalence.
+Unlike previous approaches, we do not resort to heuristics or constraints from a word-alignment model, but instead directly induce a synchronous grammar from parallel sentence-aligned corpora.
+We use a hierarchical Bayesian prior to bias towards compact grammars with small translation units.
+Inference is performed using a novel Gibbs sampler over synchronous derivations.
+This sampler side-steps the intractability issues of previous models which required inference over derivation forests.
+Instead each sampling iteration is highly efficient, allowing the model to be applied to larger translation corpora than previous approaches.
+We use Gibbs sampler for learning the SCFG by reasoning over the space of derivations (Blunsom et al, 2009).
+We present a method for maintaining table counts without needing to record the table assignments for each translation decision.
+We apply the technique of using multiple processors to perform approximate Gibbs sampling which we show achieve equivalent performance to the exact Gibbs sampler.
+
+
+
+74 GT: A Latent Dirichlet Allocation Method for Selectional Preferences
+The computation of selectional preferences, the admissible argument values for a relation, is a well-known NLP task with broad applicability. We present LDA-SP, which utilizes LinkLDA (Erosheva et al., 2004) to model selectional preferences.
+By simultaneously inferring latent topics and topic distributions over relations, LDA-SP combines the benefits of previous approaches: like traditional class-based approaches, it produces human interpretable classes describing each relation’s preferences, but it is competitive with non-class-based methods in predictive power.
+We compare LDA-SP to several state-ofthe-art methods achieving an 85% increase in recall at 0.9 precision over mutual information (Erk, 2007).
+We also evaluate LDA-SP’s effectiveness at filtering improper applications of inference rules, where we show substantial improvement over Pantel et al.’s system (Pantel et al., 2007).
+We focus on inferring latent topics and their distributions over multiple arguments and relations (e.g., the subject and direct object of a verb).
+
+
+
+75 GT: D-Theory: Talking About Talking About Trees
+Linguists, including computational linguists, have always been fond of talking about trees.
+In this paper, we outline a theory of linguistic structure which talks about talking about trees; we call this theory Description theory (D-theory).
+While important issues must be resolved before a complete picture of D-theory emerges (and also before we can build programs which utilize it), we believe that this theory will ultimately provide a framework for explaining the syntax and semantics of natural language in a manner which is intrinsically computational.
+This paper will focus primarily on one set of motivations for this theory, those engendered by attempts to handle certain syntactic phenomena within the framework of deterministic parsing.
+Our D-theory model is powerful in that it allows the right-most daughter of a node to be lowered under a sibling node.
+
+
+
+76 GT: Features And Values
+The paper discusses the linguistic aspects of a new general purpose facility for computing with features.
+The program was developed in connection with the course I taught at the University of Texas in the fall of 1983.
+It is a generalized and expanded version of a system that Stuart Shieber originally designed for the PATR-II project at SRI in the spring of 1983 with later modifications by Fernando Pereira and me.
+Like its predecessors, the new Texas version of the "DG {directed graph}" package is primarily intended for representing morphological and syntactic information but it may turn out to be very useful for semantic representations too.
+We provide examples of feature structures in which a negation operator might be useful.
+
+
+
+77 GT: Functional Unification Grammar: A Formalism For Machine Translation
+Functional Unification Grammar provides an opportunity to encompass within one formalism and computational system the parts of machine translation systems that have usually been treated separately, natably analysis, transfer, and synthesis.
+Many of the advantages of this formalism come from the fact that it is monotonic allowing data structures to grow differently as different nondeterministic alternatives in a computation are pursued, but never to be modified in any way.
+A striking feature of this system is that it is fundamental reversible, allowing a to translate as b only if b could translate as a.
+
+
+
+78 GT: A Syntactic Approach To Discourse Semantics
+A correct structural analysis of a discourse is a prerequisite for understanding it.
+This paper sketches the outline of a discourse grammar which acknowledges several different levels of structure.
+This grammar, the "Dynamic Discourse Model", uses an Augmented Transition Network parsing mechanism to build a representation of the semantics of a discourse in a stepwise fashion, from left to right, on the basis of the semantic representations of the individual clauses which constitute the discourse.
+The intermediate states of the parser model the intermediate states of the social situation which generates the discourse.
+The paper attempts to demonstrate that a discourse may indeed be viewed as constructed by means of sequencing and recursive nesting of discourse constituents.
+It gives rather detailed examples of discourse structures at various levels, and shows how these structures are described in the framework proposed here.
+
+
+
+79 GT: Char Align: A Program For Aligning Parallel Texts At The Character Level
+There have been a number of recent papers on aligning parallel texts at the sentence level, e.g., Brown et al (1991), Gale and Church (to appear), Isabelle (1992), Kay and R/Ssenschein (to appear), Simard et al (1992), Warwick-Armstrong and Russell (1990).
+On clean inputs, such as the Canadian Hansards, these methods have been very successful (at least 96% correct by sentence).
+Unfortunately, if the input is noisy (due to OCR and/or unknown markup conventions), then these methods tend to break down because the noise can make it difficult to find paragraph boundaries, let alone sentences.
+This paper describes a new program, charalign, that aligns texts at the character level rather than at the sentence/paragraph level, based on the cognate approach proposed by Simard et al.
+We show that cheap alignment of text segments is possible by exploiting orthographic cognates.
+Char_align is designed for language pairs that share a common alphabet.
+
+
+
+80 GT: Principle-Based Parsing Without Overgeneration
+Overgeneration is the main source of computational complexity in previous principle-based parsers.
+This paper presents a message passing algorithm for principle-based parsing that avoids the overgeneration problem.
+This algorithm has been implemented in C++ and successfully tested with example sentences from (van Riemsdijk and Williams, 1986).
+Our parser produces functional relations for the components in a sentence, including subject and object relations with respect to a verb.
+In our dependency trees nodes represent text expressions and edges represent the syntactic relations between them.
+
+
+
+81 GT: Distributional Clustering Of English Words
+We describe and evaluate experimentally a method for clustering words according to their distribution in particular syntactic contexts.
+Words are represented by the relative frequency distributions of contexts in which they appear, and relative entropy between those distributions is used as the similarity measure for clustering.
+Clusters are represented by average context distributions derived from the given words according to their probabilities of cluster membership.
+In many cases, the clusters can be thought of as encoding coarse sense distinctions.
+Deterministic annealing is used to find lowest distortion sets of clusters: as the annealing parameter increases, existing clusters become unstable and subdivide, yielding a hierarchical "soft" clustering of the data.
+Clusters are used as the basis for class models of word coocurrence, and the models evaluated with respect to held-out test data.
+We make use of deterministic annealing to cluster verb-argument pairs into classes of verbs and nouns.
+
+
+
+82 GT: Multi-Paragraph Segmentation Of Expository Text
+This paper describes TextTiling, an algorithm for partitioning expository texts into coherent multi-paragraph discourse units which reflect the subtopic structure of the texts.
+The algorithm uses domain-independent lexical frequency and distribution information to recognize the interactions of multiple simultaneous themes.
+Two fully-implemented versions of the algorithm are described and shown to produce segmentation that corresponds well to human judgments of the major subtopic boundaries of thirteen lengthy texts.
+We compute similarities between textual units based on the similarities of word space vectors.
+TextTiling is able to partition messages into multi-paragraph segments with an overall precision of 83% and recall of 78%.
+
+
+
+83 GT: Corpus Statistics Meet The Noun Compound: Some Empirical Results
+A variety of statistical methods for noun compound analysis are implemented and compared.
+The results support two main conclusions.
+First, the use of conceptual association not only enables a broad coverage, but also improves the accuracy.
+Second, an analysis model based on dependency grammar is substantially more accurate than one based on deepest constituents, even though the latter is more prevalent in the literature.
+We propose an unsupervised method for estimating the frequencies of the competing bracketings based on a taxonomy or a thesaurus.
+We test both adjacency and dependency models on 244 compounds extracted from Grolier's encyclopedia, a corpus of 8 million words.
+
+
+
+84 GT: Unsupervised Word Sense Disambiguation Rivaling Supervised Methods
+This paper presents an unsupervised learning algorithm for sense disambiguation that, when trained on unannotated English text, rivals the performance of supervised techniques that require time-consuming hand annotations.
+The algorithm is based on two powerful constraints - that words tend to have one sense per discourse and one sense per collocation - exploited in an iterative bootstrapping procedure.
+Tested accuracy exceeds 96%.
+We introduce the idea of sense consistency and extend it to operator across related documents.
+We propose the self training, a semi-supervised algorithm which we apply do word sense disambiguation.
+
+
+
+85 GT: Entity-Based Cross-Document Core f erencing Using the Vector Space Model
+Cross-document coreference occurs when the same person, place, event, or concept is discussed in more than one text source.
+Computer recognition of this phenomenon is important because it helps break "the document boundary" by allowing a user to examine information about a particular entity from multiple text sources at the same time.
+In this paper we describe a cross-document coreference resolution algorithm which uses the Vector Space Model to resolve ambiguities between people having the same name.
+In addition, we also describe a scoring algorithm for evaluating the cross-document coreference chains produced by our system and we compare our algorithm to the scoring algorithm used in the MUC-6 (within document) coreference task.
+
+
+We proposed entity-based cross-document co-referencing which uses co-reference chains of each document to generate its summary and then use the summary rather than the whole article to select informative words to be the features of the document.
+
+
+
+86 GT: Two Statistical Parsing Models Applied To The Chinese Treebank
+This paper presents the first-ever results of applying statistical parsing models to the newly-available Chinese Treebank.
+We have employed two models, one extracted and adapted from BBN's SIFT System (Miller et al. , 1998) and a TAG-based parsing model, adapted from (Chiang, 2000).
+On sentences with < 40 words, the former model performs at 69% precision, 75% recall, and the latter at 77% precision and 78% recall.
+Our parser operates at word-level with the assumption that input sentences are pre-segmented.
+
+
+
+87 GT: Latent Semantic Analysis For Text Segmentation
+This paper describes a method for linear text segmentation that is more accurate or at least as accurate as state-of-the-art methods (Utiyama and Isahara, 2001; Choi, 2000a).
+Inter-sentence similarity is estimated by latent semantic analysis (LSA).
+Boundary locations are discovered by divisive clustering.
+Test results show LSA is a more accurate similarity measure.
+We use all vocabulary words to compute low-dimensional document vectors.
+
+
+
+88 GT: Building A Discourse-Tagged Corpus In The Framework Of Rhetorical Structure Theory
+We describe our experience in developing a discourse-annotated corpus for community-wide use.
+Working in the framework of Rhetorical Structure Theory, we were able to create a large annotated resource with very high consistency, using a well-defined methodology and protocol.
+This resource is made publicly available through the Linguistic Data Consortium to enable researchers to develop empirically grounded, discourse-specific applications.
+In our Discourse Tree Bank only 26% of Contrast relations are indicated by cue phrases while in NTC-7 about 70% of Contrast were indicated by cue phrases.
+Our corpus contains 385 Wall Street Journal articles annotated following the Rhetorical Structure Theory.
+
+
+
+89 GT: NLTK: The Natural Language Toolkit
+NLTK, the Natural Language Toolkit, is a suite of open source program modules, tutorials and problem sets, providing ready-to-use computational linguistics courseware.
+NLTK covers symbolic and statistical natural language processing, and is interfaced to annotated corpora.
+Students augment and replace existing components, learn structured programming by example, and manipulate sophisticated models from the outset.
+NLTK, the Natural Language Toolkit, is a suite of Python modules providing many NLP data types, processing tasks, corpus samples and readers, together with animated algorithms, tutorials and problem sets.
+
+
+
+90 GT: Unsupervised Discovery Of Morphemes
+We present two methods for unsupervised segmentation of words into morpheme-like units.
+The model utilized is especially suited for languages with a rich morphology, such as Finnish.
+The first method is based on the Minimum Description Length (MDL) principle and works online.
+In the second method, Maximum Likelihood (ML) optimization is used.
+The quality of the segmentations is measured using an evaluation method that compares the segmentations produced to an existing morphological analysis.
+Experiments on both Finnish and English corpora show that the presented methods perform well compared to a current state-of-the-art system.
+Our method is based on jointly minimizing the size of the morph codebook and the encoded size of all the word forms using the minimum description length MDL cost function.
+
+
+
+91 GT: Language Independent NER Using A Maximum Entropy Tagger
+Named Entity Recognition (NER) systems need to integrate a wide variety of information for optimal performance.
+This paper demonstrates that a maximum entropy tagger can effectively encode such information and identify named entities with very high accuracy.
+The tagger uses features which can be obtained for a variety of languages and works effectively not only for English, but also for other languages such as German and Dutch.
+We condition the label of a token at a particular position on the label of the most recent previous instance of that same token in a prior sentence of the same document.
+Our named entity recogniser is run on pos-tagged and chunked documents in the corpus to identify and extract named entities as potential topics.
+
+
+
+92 GT: Learning Extraction Patterns For Subjective Expressions
+This paper presents a bootstrapping process that learns linguistically rich extraction patterns for subjective (opinionated) expressions.
+High-precision classifiers label unannotated data to automatically create a large training set, which is then given to an extraction pattern learning algorithm.
+The learned patterns are then used to identify more subjective sentences.
+The bootstrapping process learns many subjective patterns and increases recall while maintaining high precision.
+We construct a high precision classifier for contiguous sentences using the number of strong and weak subjective words in current and nearby sentences.
+We introduce a bootstrapping method to learn subjective extraction patterns that match specific syntactic templates using a high-precision sentence-level subjectivity classifier and a large unannotated corpus.
+
+
+
+93 GT: HHMM-Based Chinese Lexical Analyzer ICTCLAS
+This document presents the results from Inst. of Computing Tech., CAS in the ACL SIGHAN-sponsored First International Chinese Word Segmentation Bake-off.
+The authors introduce the unified HHMM-based frame of our Chinese lexical analyzer ICTCLAS and explain the operation of the six tracks.
+Then provide the evaluation results and give more analysis.
+Evaluation on ICTCLAS shows that its performance is competitive.
+Compared with other system, ICTCLAS has ranked top both in CTB and PK closed track.
+In PK open track, it ranks second position.
+ICTCLAS BIG5 version was transformed from GB version only in two days; however, it achieved well in two BIG5 closed tracks.
+Through the first bakeoff, we could learn more about the development in Chinese word segmentation and become more confident on our HHMM-based approach.
+At the same time, we really find our problems during the evaluation.
+The bakeoff is interesting and helpful.
+
+
+
+94 GT: The Senseval-3 English Lexical Sample Task
+This paper presents the task definition, resources, participating systems, and comparative results for the English lexical sample task, which was organized as part of the SENSEVAL-3 evaluation exercise.
+The task drew the participation of 27 teams from around the world, with a total of 47 systems.
+
+
+
+95 GT: A Linear Programming Formulation For Global Inference In Natural Language Tasks
+Given a collection of discrete random variables representing outcomes of learned local predictors in natural language, e.g., named entities and relations, we seek an optimal global assignment to the variables in the presence of general (non-sequential) constraints.
+Examples of these constraints include the type of arguments a relation can take, and the mutual activity of different relations, etc.
+We develop a linear programming formulation for this problem and evaluate it in the context of simultaneously learning named entities and relations.
+Our approach allows us to efficiently incorporate domain and task specific constraints at decision time, resulting in significant improvements in the accuracy and the human-like quality of the inferences.
+we use ILP to deal with the joint inference problem of named entity and relation identification.
+we applied an ILP model to the task of the simultaneous assignment of semantic roles to the entities mentioned in a sentence and recognition of the relations holding between them.
+we described a classification-based framework in which they jointly learn to identify named entities and relations.
+
+
+
+96 GT: Calibrating Features For Semantic Role Labeling
+This paper takes a critical look at the features used in the semantic role tagging literature and show that the information in the input, generally a syntactic parse tree, has yet to be fully exploited.
+We propose an additional set of features and our experiments show that these features lead to fairly significant improvements in the tasks we performed.
+We further show that different features are needed for different subtasks.
+Finally, we show that by using a Maximum Entropy classifier and fewer features, we achieved results comparable with the best previously reported results obtained with SVM models.
+We believe this is a clear indication that developing features that capture the right kind of information is crucial to advancing the stateof-the-art in semantic analysis.
+
+
+
+97 GT: LexPageRank: Prestige In Multi-Document Text Summarization
+Multidocument extractive summarization relies on the concept of sentence centrality to identify the most important sentences in a document.
+Centrality is typically defined in terms of the presence of particular important words or in terms of similarity to a centroid pseudo-sentence.
+We are now considering an approach for computing sentence importance based on the concept of eigenvector centrality (prestige) that we call LexPageRank.
+In this model, a sentence connectivity matrix is constructed based on cosine similarity.
+If the cosine similarity between two sentences exceeds a particular predefined threshold, a corresponding edge is added to the connectivity matrix.
+We provide an evaluation of our method on DUC 2004 data.
+The results show that our approach outperforms centroid-based summarization and is quite successful compared to other summarization systems.
+we propose Lex PageRank, which is an approach for computing sentence importance based on the concept of eigenvector centrality.
+
+
+
+98 GT: Statistical Significance Tests For Machine Translation Evaluation
+Automatic evaluation metrics for Machine Translation (MT) systems, such as BLEU, METEOR and the related NIST metric, are becoming increasingly important in MT research and development.
+This paper presents a significance test-driven comparison of n-gram-based automatic MT evaluation metrics.
+Statistical significance tests use bootstrapping methods to estimate the reliability of automatic machine translation evaluations.
+Based on this reliability estimation, we study the characteristics of different MT evaluation metrics and how to construct reliable and efficient evaluation suites.
+
+
+
+99 GT: Domain Adaptation With Structural Correspondence Learning
+Discriminative learning methods are widely used in natural language processing.
+These methods work best when their training and test data are drawn from the same distribution.
+For many NLP tasks, however, we are confronted with new domains in which labeled data is scarce or non-existent.
+In such cases, we seek to adapt existing models from a resource-rich source domain to a resource-poor target domain.
+We introduce structural correspondence learning to automatically induce correspondences among features from different domains.
+We test our technique on part of speech tagging and show performance gains for varying amounts of source and target training data, as well as improvements in target domain parsing accuracy using our improved tagger.
+Following (Blitzer et al, 2006), we present an application of structural correspondence learning to non-projective dependency parsing (McDonald et al, 2005).
+Our approach is to train a separate out-of-domain parser, and use this to generate additional features on the supervised and unsupervised in-domain data.
+We introduce SCL that is one feature representation approach that has been effective on certain high-dimensional NLP problems, including part-of-speech tagging and sentiment classification.
+We apply the multitask algorithm of (Ando and Zhang, 2005) to domain adaptation problems in NLP.
+We append the source domain labeled data with predicted pivots (i.e. words that appear in both the source and target domains) to adapt a POS tagger to a target domain.
+
+
+
+100 GT: Which Side Are You On? Identifying Perspectives At The Document And Sentence Levels
+In this paper we investigate a new problem of identifying the perspective from which a document is written.
+By perspective we mean a point of view, for example, from the perspective of Democrats or Republicans.
+Can computers learn to identify the perspective of a document?
+Not every sentence is written strongly from a perspective.
+Can computers learn to identify which sentences strongly convey a particular perspective?
+We develop statistical models to capture how perspectives are expressed at the document and sentence levels, and evaluate the proposed models on articles about the Israeli-Palestinian conflict.
+The results show that the proposed models successfully learn how perspectives are reflected in word usage and can identify the perspective of a document with high accuracy.
+We use hierarchical Bayesian modelling for opinion modelling (Lin et al, 2006).
+Our experiments were conducted in political debate corpus (Lin et al 2006).
+We explore relationships between sentence-level and document-level classification for a stance-like prediction task.
+We introduce implicit sentiment a topic of study in computational linguistics under the rubric of identifying perspective, though similar work had begun earlier in the realm of political science.
+
+
+
+101 GT: METEOR: An Automatic Metric for MT Evaluation with High Levels of Correlation with Human Judgments
+Meteor is an automatic metric for Machine Translation evaluation which has been demonstrated to have high levels of correlation with human judgments of translation quality, significantly outperforming the more commonly used Bleu metric.
+It is one of several automatic metrics used in this year’s shared task within the ACL WMT-07 workshop.
+This paper recaps the technical details underlying the metric and describes recent improvements in the metric.
+The latest release includes improved metric parameters and extends the metric to support evaluation of MT output in Spanish, French and German, in addition to English.
+In an MT evaluation setting, sense clusters have been integrated into an Mt evaluation metric (METEOR) and brought about an increase of the metric's correlation with human judgments of translation quality in different languages.
+
+
+
+102 GT: Detection of Grammatical Errors Involving Prepositions
+This paper presents ongoing work on the detection of preposition errors of non-native speakers of English.
+Since prepositions account for a substantial proportion of all grammatical errors by ESL (English as a Second Language) learners, developing an NLP application that can reliably detect these types of errors will provide an invaluable learning resource to ESL students.
+To address this problem, we use a maximum entropy classifier combined with rule-based filters to detect preposition errors in a corpus of student essays.
+Although our work is preliminary, we achieve a precision of 0.8 with a recall of 0.3.
+Chodorow et al (2007) employed a maximum entropy model to estimate the probability of 34 prepositions based on 25 local context features ranging from words to NP/VP chunks.
+A context is represented by 25 lexical features and 4 combination features: Lexical Token and POS n-grams in a 2 word window around the preposition, plus the head verb in the preceding verb phrase (PV), the head noun in the preceding noun phrase (PN) and the head noun in the following noun phrase (FN) when available.
+
+
+
+103 GT: Overview of BioNLP&rsquo;09 Shared Task on Event Extraction
+Even though considerable attention has been given to semantic orientation of words and the creation of large polarity lexicons, research in emotion analysis has had to rely on limited and small emotion lexicons.
+In this paper, we show how we create a high-quality, moderate-sized emotion lexicon using Mechanical Turk.
+In addition to questions about emotions evoked by terms, we show how the inclusion of a word choice question can discourage malicious data entry, help identify instances where the annotator may not be familiar with the target term (allowing us to reject such annotations), and help obtain annotations at sense level (rather than at word level).
+We perform an extensive analysis of the annotations to better understand the distribution of emotions evoked by terms of different parts of speech.
+We identify which emotions tend to be evoked simultaneously by the same term and show that certain emotions indeed go hand in hand.
+The BioNLP 09 Shared Task on Event Extraction, the first large scale evaluation of biomedical event extraction systems, drew the participation of 24 groups and established a standard event representation scheme and datasets.
+The BioNLP 09 Shared Task is the first shared task that provided a consistent data set and evaluation tools for extraction of such biological relations.
+
+
+
+104 GT: Emotions Evoked by Common Words and Phrases: Using Mechanical Turk to Create an Emotion Lexicon
+Even though considerable attention has been given to semantic orientation of words and the creation of large polarity lexicons, research in emotion analysis has had to rely on limited and small emotion lexicons.
+In this paper, we show how we create a high-quality, moderate-sized emotion lexicon using Mechanical Turk.
+In addition to questions about emotions evoked by terms, we show how the inclusion of a word choice question can discourage malicious data entry, help identify instances where the annotator may not be familiar with the target term (allowing us to reject such annotations), and help obtain annotations at sense level (rather than at word level).
+We perform an extensive analysis of the annotations to better understand the distribution of emotions evoked by terms of different parts of speech.
+We identify which emotions tend to be evoked simultaneously by the same term and show that certain emotions indeed go hand in hand.
+We focus on emotion evoked by common words and phrases.
+We explore the use of Mechanical Turk to build the lexicon based on human judgment.
+We create a crowd sourced term emotion association lexicon consisting of associations of over 10,000 word-sense pairs with eight emotions joy, sadness, anger, fear, trust, disgust, surprise, and anticipation argued to be the basic and prototypical emotions.
+
+
+
+105 GT: Distinguishing Word Senses In Untagged Text
+This paper describes an experimental comparison of three unsupervised learning algorithms that distinguish the sense of an ambiguous word in untagged text.
+The methods described in this paper, McQuitty's similarity analysis, Ward's minimum-variance method, and the EM algorithm, assign each instance of an ambiguous word to a known sense definition based solely on the values of automatically identifiable features in text.
+These methods and feature sets are found to be more successful in disambiguating nouns rather than adjectives or verbs.
+Overall, the most accurate of these procedures is McQuitty's similarity analysis in combination with a high dimensional feature set.
+we propose a (dis) similarity based discrimination approach that computes (dis) similarity among each pair of instances of the target word.
+
+
+
+106 GT: CogNIAC: High Precision Coreference With Limited Knowledge And Linguistic Resources
+This paper presents a high precision pronoun resolution system that is capable of greater than 90% precision with 60% and better recall for some pronouns.
+It is suggested that the system is resolving a sub-set of anaphors that do not require general world knowledge or sophisticated linguistic processing for successful resolution.
+The system does this by being very sensitive to ambiguity, and only resolving pronouns when very high confidence rules have been satisfied.
+The system is capable of 'noticing' ambiguity because it requires that there be a unique antecedent within a salience ranking, and the salience rankings are not total orders, i.e. two or more antecedents can be equally salient.
+Given the nature of the systems rules, it is very likely that they are largely domain independent and that they reflect processing strategies used by humans for general language comprehension.
+The system has been evaluated in two distinct experiments which support the overall validity of the approach.
+our method, CogNiac is a knowledge poor approach to anaphora resolution based on a set of high confidence rules which are successively applied over the pronoun under consideration.
+
+
+
+107 GT: Edge-Based Best-First Chart Parsing
+Best-first probabilistic chart parsing attempts to parse efficiently by working on edges that are judged "best" by some probabilistic figure of merit (FOM).
+Recent work has used probabilistic context-free grammars (PCFGs) to assign probabilities to constituents, and to use these probabilities as the starting point for the FOM.
+This paper extends this approach to using a probabilistic FOM to judge edges (incomplete constituents), thereby giving a much finer-grained control over parsing effort.
+We show how this can be accomplished in a particularly simple way using the common idea of binarizing the PCFG.
+The results obtained are about a factor of twenty improvement over the best prior results - that is, our parser achieves equivalent results using one twentieth the number of edges.
+Furthermore we show that this improvement is obtained with parsing precision and recall levels superior to those achieved by exhaustive parsing.
+We introduce overparsing as a technique to improve parse accuracy by continuing parsing after the first complete parse tree is found.
+
+
+
+108 GT: Language Independent Named Entity Recognition Combining Morphological And Contextual Evidence
+Identifying and classifying personal, geographic, institutional or other names in a text is an important task for numerous applications.
+This paper describes and evaluates a language-independent bootstrapping algorithm based on iterative learning and re-estimation of contextual and morphological patterns captured in hierarchically smoothed trie models.
+The algorithm learns from unannotated text and achieves competitive performance when trained on a very short labelled name list with no other required language-specific information, tokenizers or tools.
+We consider one sense per discourse phenomenon, the tendency of terms to have a fixed meaning within a single document.
+We take a character-level approach to named entity recognition (NER) using prefix and suffix tries.
+The bootstrapping stage uses the initial or current entity assignments to estimate the class conditional distributions for both entities and contexts along their trie paths, and then re-estimates the distributions of the contexts/entity-candidates to which they are linked, recursively, until all accessible nodes are reached.
+
+
+
+109 GT: Detecting Text Similarity Over Short Passages: Exploring Linguistic Feature Combinations Via Machine Learning
+We present a new composite similarity metric that combines information from multiple linguistic indicators to measure semantic distance between pairs of small textual units.
+Several potential features are investigated and an optimal combination is selected via machine learning.
+We discuss a more restrictive definition of similarity than traditional, document-level and information retrieval-oriented, notions of similarity, and motivate it by showing its relevance to the multi-document text summarization problem.
+Results from our system are evaluated against standard information retrieval techniques, establishing that the new method is more effective in identifying closely related textual units.
+At the level of short passages or sentences, we go beyond N-gram, taking advantage of WordNet synonyms, as well as ordering and distance between shared words.
+
+
+
